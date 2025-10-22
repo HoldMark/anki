@@ -1,4 +1,4 @@
-/*---- COMMON START ----*/
+/* COMMON START */
 
 *{
 	box-sizing: border-box;
@@ -30,9 +30,11 @@ a{
 	display: none;
 }
 
-/*---- COMMON END ----*/
+/* COMMON END */
 
-/*---- HEADERS START ----*/
+/*---------------*/
+
+/* HEADERS START */
 
 .theme_block{
 	position: absolute;
@@ -62,18 +64,22 @@ a{
 	margin-left: 5px;
 }
 
-/*---- HEADERS END ----*/
+/* HEADERS END */
 
-/*---- QUESTION BLOCK START ----*/
+/*---------------*/
+
+/* QUESTION BLOCK START */
 
 
 .question_wrap{
 	margin-bottom: 20px;
 }
 
-/*---- QUESTION BLOCK END ----*/
+/* QUESTION BLOCK END */
 
-/*---- MORE INFO START ----*/
+/*---------------*/
+
+/* MORE INFO START */
 
 .word_info_wrap{
 	margin: 20px 0px;
@@ -86,9 +92,11 @@ a{
 	background: rgb(204, 204, 204, .5)
 }
 
-/*---- MORE INFO END ----*/
+/* MORE INFO END */
 
-/*---- BUTTONS START ----*/
+/*---------------*/
+
+/* BUTTONS START */
 
 .word_button_wrap{
 	margin-top: 20px;
@@ -126,9 +134,11 @@ a{
 	min-height: 45px;
 }
 
-/*---- BUTTONS END ----*/
+/* BUTTONS END */
 
-/*---- OTHER START ----*/
+/*-------------*/
+
+/*OTHER START*/
 
 
 .after_buttons{
@@ -195,7 +205,7 @@ a{
 .review_name{
 	color: #737373;
 }
-.review_text_block, .style_suggestions, .grammar_errors, .explanation_of_text, .sent_text, .correct_version {
+.review_result_block, review_text_block, .style_suggestions, .grammar_errors, .explanation_of_text, .sent_text, .correct_version {
 	display: none;
 }
 .style_suggestions ul, .grammar_errors ul{
