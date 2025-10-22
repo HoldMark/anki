@@ -6,13 +6,13 @@
 
 ```
 .
-├── create_task_addon  # Создает задание для написания предложения
+├── create_task_addon  # Плагин для создания задания для написания предложения
 │	 ├── __init__.py
 │	 ├── create_task.py
 │	 ├── english_data.py
 │	 ├── request_task_from_python.js
 │	 └── requirements.txt
-├── delay_addon  # Плагин для задержки кнопок оценок (не реализовано)
+├── _delay_addon  # Плагин для задержки кнопок оценок (не реализовано)
 │	 └── delay.py
 ├── html_css
 │	 ├── common.css
@@ -43,7 +43,7 @@
 │	 ├── exc.py
 │	 ├── main.py
 │	 └── utils.py
-├── review_gramma_addon  # Проверяет предложение через LLM
+├── review_gramma_addon  # Плагин проверяет предложение через LLM
 │	 ├── __init__.py
 │	 ├── data
 │	 │	 ├── base_request_data.py
@@ -53,6 +53,6 @@
 │	 │	 └── prompts.py
 │	 ├── gemini_client.py
 │	 └── request_task_review_to_python.js
-└── review_gramma_js
+└── _review_gramma_js  # Реализация проверки на JS (не реализовано)
     └── send_req.js
 ```
