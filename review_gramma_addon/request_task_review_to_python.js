@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector('.review_text_block').style.display = 'block';
         
         // отображение правильной версии
-        if (grammar_correctness) {
+        if (!grammar_correctness) {
             document.querySelector('.correct_version').style.display = 'inline-block';
             document.querySelector('.review_correct_version_value').innerHTML = correct_version;
         }
