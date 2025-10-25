@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 class GeminiClient {
     URL = "https://generativelanguage.googleapis.com/v1beta/models/";
     BASEMODEL = "gemini-2.5-flash";
-    API_KEY = "AIzaSyCzunUhJnQ-0QhCXZOD166ms0Zn5Lc58FE";
+    API_KEY = ""; // Need to set this up in the .env file
 
     generateContent(data) {
         console.log("generateContent: get data", data);
