@@ -3,7 +3,6 @@ from .models import ReviewResponseModel
 from .prompts import check_grammar
 
 
-
 def get_base_request_data(text) -> dict:
     request_data = {
         "contents": [

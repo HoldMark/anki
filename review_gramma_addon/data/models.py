@@ -1,5 +1,6 @@
 from .base_response_mobel import BaseResponseModel
 
+
 class ReviewResponseModel(BaseResponseModel):
     text: str
     is_word: bool

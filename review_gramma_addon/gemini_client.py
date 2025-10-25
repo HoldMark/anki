@@ -2,6 +2,7 @@
 
 import urllib.request
 import json
+from .config.read_env import GOOGLE_API_KEY
 
 
 class GeminiClient:
@@ -34,7 +35,7 @@ class GeminiClient:
     def headers(self):
         return {
                 'Content-Type': 'application/json',
-                'x-goog-api-key': "AIzaSyCzunUhJnQ-0QhCXZOD166ms0Zn5Lc58FE", 
+                'x-goog-api-key': GOOGLE_API_KEY,
                 'user-agent': 'google-genai-sdk/1.43.0 gl-python/3.12.3', 
                 'x-goog-api-client': 'google-genai-sdk/1.43.0 gl-python/3.12.3'
             }
