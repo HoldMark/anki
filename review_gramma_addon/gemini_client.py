@@ -20,16 +20,20 @@ class GeminiClient:
         )
 
         # Отправляем и читаем ответ
-        with urllib.request.urlopen(req) as response:
-            body = response.read().decode("utf-8")
-            headers = response.headers
-            status_code = response.status
-            
-            print(f"body: {body}")
-            print(f"headers: {headers}")
-            print(f"status_code: {status_code}")
+        try:
+            with urllib.request.urlopen(req) as response:
+                body = response.read().decode("utf-8")
+                headers = response.headers
+                status_code = response.status
 
-            return json.loads(body)
+                print(f"body: {body}")
+                print(f"headers: {headers}")
+                print(f"status_code: {status_code}")
+
+                return json.loads(body)
+        except Exception as e:
+            print(e)
+            return "Got an error"
 
     @property
     def headers(self):

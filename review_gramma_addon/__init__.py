@@ -21,11 +21,16 @@ def task_router(handled, message, context):
         parsed_data = parse_data(**data)
         data = get_base_request_data(parsed_data)
         content = gemini_client.generate_content(data)
-        text_raw = content["candidates"][0]["content"]["parts"][0]["text"]
-        text_json = json.loads(text_raw)
+
+        if content == "Got an error":
+            text_json = {"result": "Error"}
+        else:
+            text_raw = content["candidates"][0]["content"]["parts"][0]["text"]
+            text_json = json.loads(text_raw)
         
         if hasattr(context, "web"):
             context.web.eval(f'receiveReviewResponse({json.dumps(text_json)});')
+
         return True, None
 
     return handled

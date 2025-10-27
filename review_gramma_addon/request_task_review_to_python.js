@@ -50,7 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function receiveReviewResponse(result) {
         // Обработка полученного результата от Python
         console.log("Received from Python:", result);
-        
+
+        if (result.result): {
+            alert("Error, please try again!");
+            return;
+        }
+
         let card_usage = document.querySelector('.condition_usage_value').innerHTML;
         let card_sentence_type = document.querySelector('.condition_sentence_type_value').innerHTML;
         let text = result.text;
