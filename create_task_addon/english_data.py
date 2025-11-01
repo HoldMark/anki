@@ -1,4 +1,4 @@
-pronouns = {  # 6 of 10 and 4 of 10
+pronouns = {
     "I": 1,
     "he": 2,
     "she": 2,
@@ -38,11 +38,11 @@ tenses = {
     "present continuous": 1,
     "present simple": 1,
     "present perfect": 1,
-    "present perfect continuous": 3,
+    "present perfect continuous": 2,
 
-    "past simple": 0,
-    "past continuous": 0,
-    "past perfect": 0,
+    "past simple": 3,
+    "past continuous": 4,
+    "past perfect": 3,
     "past perfect continuous": 0,
 
     "future simple": 0,
@@ -52,7 +52,7 @@ tenses = {
 }
 
 usages = {
-    "present continuous": {  # веса указаны
+    "present continuous": {
         "to talk about events/state which are true **around the moment of speaking or now**": 1,
         "simultaneous/parallel actions that are occurring in a certain period of time": 1,
         "to describe actions which are repeated or regular, but which we believe to be temporary": 1,
@@ -102,6 +102,36 @@ usages = {
         "to ask and answer questions about the duration of an activity": 1,
         "to describe an unusual or uncharacteristic action that is temporary": 1,
         "to add emotional coloring (such as annoyance or criticism) to a statement, especially when describing repeated or irritating actions — often with adverbs like `always`, `constantly`, etc.": 1,
+    },
+    "past simple": {
+        "to talk about definite time in the past (often we specify when something happened, e.g. yesterday, three weeks ago, last year, when I was young)": 1,
+        "to indicate a single action in the past": 1,
+        "to express a repeated action/event that happened more than once  (habitual events)": 1,
+        "to indicate a permanent feature (state) of the object": 1,
+        "to express a sequence of actions in the past": 1,
+        "to express a polite, modest, or unobtrusive request, wish, or question": 2,
+        "to form the verb constructions of subjunctive mood II: when expressing an event considered unreal": 2,
+    },
+    "past continuous": {
+        "to talk about actions and states in progress (happening) around a **particular time** in the past": 2,
+        "simultaneous/parallel actions": 1,
+        "a longer action that was in progress when another action occurred (interruption)": 2,
+        "to describe something **temporary** that was happening in our life in the past": 2,
+        "to emphasise that the action or state continued for a period of time in the past": 2,
+        "used to add emotional coloring to continuously repeated (events/states)": 2,
+        "used to add emotional coloring to constant, repeated, unplanned or undesired (events/states)": 2,
+        "unnatural, unusual action or state that is temporary": 2,
+        "to give a reason or context for an event": 2,
+        "to talk about repeated 'background' events in the past. It can suggest that the situation was temporary or subject to change": 2,
+        "to create a background or atmosphere when telling a story - **(artistic)**": 1,
+    },
+    "past perfect": {
+        "to describe an action or state that has already occurred up to a certain point in the past": 1,
+        "to describe an action or state that has already not occurred up to a certain point in the past": 1,
+        "to indicate an action/state in the past in the subjunctive mood II": 1,
+        "to refer to situations which have changed": 1,
+        "some special patterns: `I hadn't + V3… , when`:": 1,
+        "instead of past perfect continuous with stative verbs": 1
     }
 }
 
