@@ -1,3 +1,3 @@
 [project]
-name="review_grammar_addon"
+name="create_task_addon"
 requires-python = "==3.10.*"
