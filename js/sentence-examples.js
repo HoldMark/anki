@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
 {
     let currentDate = new Date();
     let today_num = currentDate.getDate();
-    let list_examples_html = document.querySelectorAll('.hidden_example');
-    
+    let list_examples_html = document.querySelectorAll('.hidden-example');
+
     let list_examples = [];
 
     for (var i =0;i < list_examples_html.length; i++){
@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let index_example = (today_num-1) % list_examples.length;
     let main_example = '!!! No example. Need to fill it !!!';
-    
+
     if (list_examples.length != 0){
         main_example = list_examples[index_example];
     }
-    
-    let main_ex_node = document.querySelector('.main_example');
+
+    let main_ex_node = document.querySelector('.main-example');
     main_ex_node.innerHTML = main_example;
 
 
@@ -44,8 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     list_items = document.querySelectorAll('li');
 
-    let ul_item = document.querySelector('.answer_block ul')
-    let hr_item = document.querySelector('.answer_block hr')
+    let ul_item = document.querySelector('.answer-block ul')
+    let hr_item = document.querySelector('.answer-block hr')
 
 
     if (list_items.length == 0){

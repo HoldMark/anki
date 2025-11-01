@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    let card_word = document.querySelector('.additional_conditions').getAttribute('data-word');
-    let card_pos = document.querySelector('.additional_conditions').getAttribute('data-pos');
-    let card_def = document.querySelector('.additional_conditions').getAttribute('data-def');
+    let card_word = document.querySelector('.additional-conditions').getAttribute('data-word');
+    let card_pos = document.querySelector('.additional-conditions').getAttribute('data-pos');
+    let card_def = document.querySelector('.additional-conditions').getAttribute('data-def');
 
     function stringToNumber(str) {
         let hash = 0;
