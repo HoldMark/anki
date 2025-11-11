@@ -1,3 +1,0 @@
-[project]
-name="review_grammar_addon"
-requires-python = "==3.10.*"

@@ -1,3 +1,0 @@
-[project]
-name="create_task_addon"
-requires-python = "==3.10.*"

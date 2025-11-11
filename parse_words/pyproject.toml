@@ -1,3 +1,0 @@
-[project]
-name="parse_words"
-requires-python = "==3.10.*"
