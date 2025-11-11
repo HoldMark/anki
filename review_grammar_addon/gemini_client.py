@@ -1,5 +1,3 @@
-# /Users/markprodius/staff/anki/check_gramma_addon/libs/google/genai/_api_client.py
-
 import urllib.request
 import json
 from .config.read_env import GOOGLE_API_KEY

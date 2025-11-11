@@ -3,7 +3,6 @@ from datetime import datetime
 from .english_data import tenses, usages, sentence_types, pronouns, obsidian_links
 
 
-
 def string_to_number(s: str) -> int:
     r = 0
     for i in s:

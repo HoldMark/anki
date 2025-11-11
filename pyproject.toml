@@ -1,0 +1,4 @@
+[project]
+name = "Anki"
+description = "This project provides some tools that could be helpful for learning something with Anki"
+requires-python = ">=3.10.10"
