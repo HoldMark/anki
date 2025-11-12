@@ -100,7 +100,8 @@ usages = {
         "for an activity that began at a point in the past and is still continuing (at the moment of speech)": 1,
         "to talk about repeated activities which started at a particular time in the past and are still continuing up until now": 1,
         "to ask and answer questions about the duration of an activity": 1,
-        "to describe an unusual or uncharacteristic action that is temporary": 1,
+        "to describe an unusual or uncharacteristic action that is temporary": 1,  # You can use it for an action that is in progress
+        "to describe an unusual or uncharacteristic action that was temporary": 1,  # or for one that was in progress
         "to add emotional coloring (such as annoyance or criticism) to a statement, especially when describing repeated or irritating actions — often with adverbs like `always`, `constantly`, etc.": 1,
     },
     "past simple": {
