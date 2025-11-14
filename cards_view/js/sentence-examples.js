@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         main_example = list_examples[index_example];
     }
 
-    let main_ex_node = document.querySelector('.main-example');
+    let main_ex_node = document.querySelector('.main-example-span');
     main_ex_node.innerHTML = main_example;
 
 
@@ -44,8 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     list_items = document.querySelectorAll('li');
 
-    let ul_item = document.querySelector('.answer-block ul')
-    let hr_item = document.querySelector('.answer-block hr')
+    let ul_item = document.querySelector('ul')
+    let hr_item = document.querySelector('hr')
 
 
     if (list_items.length == 0){

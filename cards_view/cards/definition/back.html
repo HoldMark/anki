@@ -1,80 +1,83 @@
 <script src="remove-all-empty-li.js"></script>
 
-<div class='main-block'>
-	<div class='inner-wrapper'>
+<div class='definition-back-content'>
 
-		<div class='sense-block'>
-			<span class="sense-span">{{sense}}</span>
-			<span class="pos-header">{{part_of_speach}}</span>
-		</div>	
-		
-		<div class="answer-block">
-			<span class="definition-span">{{definition}}</span>
-		</div> <!--.answer-block-->
+	<div class='basic-block basic-block-definition'>
+		<div class='basic-content-wrapper'>
 
-	</div> <!--.inner-wrapper-->
-</div> <!--.main-block-->
+			<div class='header-definition'>
+				<div class='sense-block'>
+					<span class="sense-span">{{sense}}</span>
+					<span class="pos-span">{{part_of_speach}}</span>
+				</div>
+			</div> <!--.header-definition-->
 
-<br>
+			<div class="body-definition">
+				<div class="definition-text-block">
+					<span class="definition-span">{{definition}}</span>
+				</div> <!--.definition-text-block-->
+			</div> <!--.body-definition-->
 
-<div class='main-block'>
-	<div class='inner-wrapper'>
-		<div class='theme-block'><span></span></div>
-		
-		<div class='question-block'>
-			
-			<div class="question-wrap">
-				<a href="https://dictionary.cambridge.org/dictionary/english/{{word}}"><span class="word-answer">{{word}}</span></a>
+		</div> <!--.basic-content-wrapper-->
+	</div> <!--.basic-block .basic-block-definition-->
+
+	<br>
+
+	<div class='basic-block basic-block-word'>
+		<div class='basic-content-wrapper'>
+			<div class="header-word">
+				<!--<div class='theme-block'><span></span></div>-->
 			</div>
 
-			<hr>
+			<div class='body-word'>
 
-			<div class="word-info-wrap">
-				<span class="">{{trans}} {{trans_type}}</span>
-			</div><!--.word-info-wrap-->
-
-			<hr>
-			
-			<div class="word-button-wrap">
-				
-				<div class="button-audio">
-					<span class="wrapper-audio">{{audio}}</span>
+				<div class="word-block">
+					<a href="https://dictionary.cambridge.org/dictionary/english/{{word}}"><span class="word-span">{{word}}</span></a>
 				</div>
-				
-				<div class="button-video">
-					<a href="https://youglish.com/pronounce/{{word}}/english/uk">
-						<span class="youglish-link">YouGlish</span>
-					</a>
-				</div>
-			
-			</div><!--.word-button-wrap-->
-			<div class="answer-block">
-			<hr class="after-buttons">
-			<ul>
-				<li>{{example_1}}</li>
-				<li>{{example_2}}</li>
-				<li>{{example_3}}</li>
-				<li>{{example_4}}</li>
-				<li>{{example_5}}</li>
-				<li>{{example_6}}</li>
-				<li>{{example_7}}</li>
-			</ul>
-		</div> <!--.answer-block-->
-		</div>	
-	
-	</div> <!--.inner-wrapper-->
-</div> <!--.main-block-->
+				<hr>
+				<div class="word-info-block">
+					<span class="">{{trans}} {{trans_type}}</span>
+				</div><!--.word-info-block-->
+				<hr>
+				<div class="button-block">
 
+					<div class="button-audio-block">
+						<span class="audio-span">{{audio}}</span>
+					</div>
 
+					<div class="button-video-block">
+						<a href="https://youglish.com/pronounce/{{word}}/english/uk">
+							<span class="youglish-link">YouGlish</span>
+						</a>
+					</div>
 
+				</div><!--.button-block-->
+				<div class="example-block">
+					<hr class="after-buttons">
+					<ul>
+						<li>{{example_1}}</li>
+						<li>{{example_2}}</li>
+						<li>{{example_3}}</li>
+						<li>{{example_4}}</li>
+						<li>{{example_5}}</li>
+						<li>{{example_6}}</li>
+						<li>{{example_7}}</li>
+					</ul>
+				</div> <!--.example-block-->
 
+			</div> <!--.body-word-->
 
-<!-- needs that to display main example -->
+		</div> <!--.basic-content-wrapper-->
+	</div> <!--.basic-block .basic-word-block-->
 
-<span class='hidden-example'>{{example_1}}</span>
-<span class='hidden-example'>{{example_2}}</span>
-<span class='hidden-example'>{{example_3}}</span>
-<span class='hidden-example'>{{example_4}}</span>
-<span class='hidden-example'>{{example_5}}</span>
+	<!-- needs that to display main example -->
 
-<!-- needs that to display main example -->
+	<span class='hidden-example'>{{example_1}}</span>
+	<span class='hidden-example'>{{example_2}}</span>
+	<span class='hidden-example'>{{example_3}}</span>
+	<span class='hidden-example'>{{example_4}}</span>
+	<span class='hidden-example'>{{example_5}}</span>
+
+	<!-- needs that to display main example -->
+
+</div> <!--.definition-back-content-->

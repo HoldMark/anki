@@ -1,107 +1,112 @@
-<script src="type-conditions.js"></script>
+<!--<script src="type-conditions.js"></script>-->
 <script src="request-task-from-python.js"></script>
 <script src="request-task-review-to-python.js"></script>
 
-<div class='main-block'>
-	<div class='inner-wrapper'>
-		<div class='theme-block'><span>sentence</span></div>
-		<div class="input-wrap">
-			<div class="input-inner-wrap">
-				{{type:word}}
+<div class='sentence-front-content'>
+	<div class='basic-block'>
+		<div class='basic-content-wrapper'>
+			<div class="header-sentence">
+				<div class='theme-block'><span>sentence</span></div>
 			</div>
-			<span class="copy-icon">
-				<svg width="20" height="20" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-					<path fill="#000000" d="M768 832a128 128 0 0 1-128 128H192A128 128 0 0 1 64 832V384a128 128 0 0 1 128-128v64a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64h64z"/>
-					<path fill="#000000" d="M384 128a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64V192a64 64 0 0 0-64-64H384zm0-64h448a128 128 0 0 1 128 128v448a128 128 0 0 1-128 128H384a128 128 0 0 1-128-128V192A128 128 0 0 1 384 64z"/>
-				</svg>
-			</span>
-		</div><!--.input-wrap-->
-
-	
-	</div><!--.inner-wrapper-->
-</div>
-
-<br>
-
-<div class='main-block'>
-	<div class='inner-wrapper'>
-		
-		<div class='sense-block'>
-			<span class="sense-span">{{sense}}</span>
-			<span class="pos-header">{{part_of_speach}}</span>
-		</div>	
-		
-		<div class="answer-block">
-			<span class="definition-span">{{definition}}</span>
-		</div> <!--.answer-block-->
-
-		<div class="condition_block" data-word="{{word}}" data-pos="{{part_of_speach}}" data-def="{{definition}}">
-			<hr>
-			<span class="condition condition_tense">
-				<span class="condition_name">tense: </span>
-				<span><a class="condition_tense_value" href=""></a></span>
-			</span>
-			<span class="condition condition_usage">
-				<span class="condition_name">usage: </span>
-				<span class="condition_usage_value"></span>
-			</span>
-			<span class="condition condition_sentence_type">
-				<span class="condition_name">sentence type: </span>
-				<span class="condition_sentence_type_value"></span>
-			</span>
-			<span class="condition condition_pronoun">
-				<span class="condition_name">pronoun: </span>
-				<span class="condition_pronoun_value"></span>
-			</span>
-		</div> <!--.condition_block-->
-
-		<div class ="review_result_block">
-            <div class="review_boolean_block">
-                <hr>
-                <span class="review review_word">
-                    <span class="review_name">word: </span>
-                    <span class="review_word_value"></span>
-                </span>
-                <span class="review review_pos">
-                    <span class="review_name">part of speech: </span>
-                    <span class="review_pos_value"></span>
-                </span>
-                <span class="review review_definition">
-                    <span class="review_name">definition: </span>
-                    <span class="review_definition_value"></span>
-                </span>
-                <span class="review review_correctness">
-                    <span class="review_name">correctness: </span>
-                    <span class="review_correctness_value"></span>
-                </span>
-            </div> <!--.review_boolean_block-->
-			<div class="review_text_block">
-                <hr>
-                <span class="review correct_version">
-                    <span class="review_name">correct version: </span>
-                    <span class="review_correct_version_value"></span>
-                </span>
-                <span class="review grammar_errors">
-                    <span class="review_name">grammar errors: </span>
-                    <span class="review_grammar_errors_value"></span>
-                </span>
-                <span class="review style_suggestions">
-                    <span class="review_name">style suggestions: </span>
-                    <span class="review_style_suggestions_value"></span>
-                </span>
-                <span class="review explanation_of_text">
-                    <span class="review_name">explanation of text: </span>
-                    <span class="review_explanation_of_text_value"></span>
-                </span>
-                <span class="review sent_text">
-                    <span class="review_name">sent text: </span>
-                    <span class="review_sent_text_value"></span>
-                </span>
-                <span class="review_result"></span>
-			</div> <!--.review_text_block-->
+			<div class="body-sentence">
+				<div class="input-block">
+					<div class="input-inner-block">
+						{{type:word}}
+					</div>
+					<span class="copy-icon">
+						<svg width="20" height="20" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+							<path fill="#000000" d="M768 832a128 128 0 0 1-128 128H192A128 128 0 0 1 64 832V384a128 128 0 0 1 128-128v64a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64h64z"/>
+							<path fill="#000000" d="M384 128a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64V192a64 64 0 0 0-64-64H384zm0-64h448a128 128 0 0 1 128 128v448a128 128 0 0 1-128 128H384a128 128 0 0 1-128-128V192A128 128 0 0 1 384 64z"/>
+						</svg>
+					</span>
+				</div><!--.input-block-->
+			</div>
 
 
-		</div> <!--.review_result_block-->
 
-	</div> <!--.inner-wrapper-->
-</div> <!--.main-block-->
+		</div><!--.basic-content-wrapper-->
+	</div> <!--.basic-block-->
+	<br>
+	<div class='basic-block'>
+		<div class='basic-content-wrapper'>
+
+			<div class="header-sentence">
+				<div class='sense-block'>
+					<span class="sense-span">{{sense}}</span>
+					<span class="pos-span">{{part_of_speach}}</span>
+				</div>
+			</div> <!--.header-sentence-->
+
+			<div class="body-sentence">
+				<div class="definition-text-block">
+					<span class="definition-span">{{definition}}</span>
+				</div> <!--.definition-text-block-->
+				<div class="condition-block" data-word="{{word}}" data-pos="{{part_of_speach}}" data-def="{{definition}}">
+					<hr>
+					<span class="condition condition-tense">
+						<span class="condition-name">tense: </span>
+						<span><a class="condition-tense-value" href=""></a></span>
+					</span>
+					<span class="condition condition-usage">
+						<span class="condition-name">usage: </span>
+						<span class="condition-usage-value"></span>
+					</span>
+					<span class="condition condition-sentence-type">
+						<span class="condition-name">sentence type: </span>
+						<span class="condition-sentence-type-value"></span>
+					</span>
+					<span class="condition condition-pronoun">
+						<span class="condition-name">pronoun: </span>
+						<span class="condition-pronoun-value"></span>
+					</span>
+				</div> <!--.condition-block-->
+				<div class ="review-result-block">
+					<div class="review-boolean-block">
+						<hr>
+						<span class="review review-word">
+							<span class="review-name">word: </span>
+							<span class="review-word-value"></span>
+						</span>
+						<span class="review review-pos">
+							<span class="review-name">part of speech: </span>
+							<span class="review-pos-value"></span>
+						</span>
+						<span class="review review-definition">
+							<span class="review-name">definition: </span>
+							<span class="review-definition-value"></span>
+						</span>
+						<span class="review review-correctness">
+							<span class="review-name">correctness: </span>
+							<span class="review-correctness-value"></span>
+						</span>
+					</div> <!--.review-boolean-block-->
+					<div class="review-text-block">
+						<hr>
+						<span class="review correct-version">
+							<span class="review-name">correct version: </span>
+							<span class="review-correct-version-value"></span>
+						</span>
+						<span class="review grammar-errors">
+							<span class="review-name">grammar errors: </span>
+							<span class="review-grammar-errors-value"></span>
+						</span>
+						<span class="review style-suggestions">
+							<span class="review-name">style suggestions: </span>
+							<span class="review-style-suggestions-value"></span>
+						</span>
+						<span class="review explanation-of-text">
+							<span class="review-name">explanation of text: </span>
+							<span class="review-explanation-of-text-value"></span>
+						</span>
+						<span class="review sent-text">
+							<span class="review-name">sent text: </span>
+							<span class="review-sent-text-value"></span>
+						</span>
+						<span class="review-result"></span>
+					</div> <!--.review-text-block-->
+				</div> <!--.review-result-block-->
+			</div>
+
+		</div> <!--.basic-content-wrapper-->
+	</div> <!--.basic-block-->
+</div> <!--.sentence-front-content-->
