@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
 {
     // remove all empty <li>
 
-    let list_items = document.querySelectorAll('li');
-    list_items.forEach(item=>{
+    let listItems = document.querySelectorAll('li');
+    listItems.forEach(item=>{
         if (item.innerHTML == ''){
             item.remove();
         }

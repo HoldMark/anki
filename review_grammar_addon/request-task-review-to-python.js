@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Fuck camelCase;
 });
+
 {
     console.log('binding listener');
     if (!window._reviewShortcutBound) {
@@ -18,32 +20,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let fieldValue = document.querySelector("#typeans")?.value;
 
-        let card_word = document.querySelector('.condition-block').getAttribute('data-word');
-        let card_pos = document.querySelector('.condition-block').getAttribute('data-pos');
-        let card_def = document.querySelector('.condition-block').getAttribute('data-def');
+        let cardWord = document.querySelector('.condition-block').getAttribute('data-word');
+        let cardPos = document.querySelector('.condition-block').getAttribute('data-pos');
+        let cardDef = document.querySelector('.condition-block').getAttribute('data-def');
 
-        let card_tense = document.querySelector('.condition-tense-value').innerHTML;
-        let card_usage = document.querySelector('.condition-usage-value').innerHTML;
-        let card_sentence_type = document.querySelector('.condition-sentence-type-value').innerHTML;
-        let card_pronoun = document.querySelector('.condition-pronoun-value').innerHTML;
+        let cardTense = document.querySelector('.condition-tense-value').innerHTML;
+        let cardUsage = document.querySelector('.condition-usage-value').innerHTML;
+        let cardSentenceType = document.querySelector('.condition-sentence-type-value').innerHTML;
+        let cardPronoun = document.querySelector('.condition-pronoun-value').innerHTML;
 
         console.log("Data collected for sending to Python");
 
     function sendDataToPython() {
         // Отправка данных в Python через pycmd
-        data_to_python = JSON.stringify({
+        dataToPython = JSON.stringify({
             action: "check grammar and other",
-            word: card_word,
-            pos: card_pos,
-            definition: card_def,
-            tense: card_tense,
-            usage: card_usage,
-            sentence_type: card_sentence_type,
-            card_pronoun: card_pronoun,
+            word: cardWord,
+            pos: cardPos,
+            definition: cardDef,
+            tense: cardTense,
+            usage: cardUsage,
+            sentence_type: cardSentenceType,
+            card_pronoun: cardPronoun,
             sentence: fieldValue,
         }); 
-        pycmd(data_to_python);
-        console.log("Sent to Python:", data_to_python);
+        pycmd(dataToPython);
+        console.log("Sent to Python:", dataToPython);
       }
         sendDataToPython();
     }
@@ -56,46 +58,46 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        let card_usage = document.querySelector('.condition-usage-value').innerHTML;
-        let card_sentence_type = document.querySelector('.condition-sentence-type-value').innerHTML;
+        let cardUsage = document.querySelector('.condition-usage-value').innerHTML;
+        let cardSentenceType = document.querySelector('.condition-sentence-type-value').innerHTML;
         let text = result.text;
-        let is_word = result.is_word;
-        let is_pos = result.is_part_of_speech;
-        let is_definition = result.is_definition;
-        let is_tense = result.is_tense;
-        let is_usage = result.is_usage;
-        let is_sentence_type = result.is_sentence_type;
-        let is_pronoun = result.is_pronoun;
+        let isWord = result.isWord;
+        let isPos = result.is_part_of_speech;
+        let isDefinition = result.is_definition;
+        let isTense = result.is_tense;
+        let isUsage = result.is_usage;
+        let isSentenceType = result.is_sentence_type;
+        let isPronoun = result.is_pronoun;
 
-        let grammar_correctness = result.grammar_correctness;
-        let correct_version = result.correct_version;
-        let errors_with_grammar = result.errors_with_grammar;
-        let style_suggestions = result.style_suggestions;
-        let explanation_of_text = result.explanation_of_text;
+        let grammarCorrectness = result.grammar_correctness;
+        let correctVersion = result.correct_version;
+        let errorsWithGrammar = result.errors_with_grammar;
+        let styleSuggestions = result.style_suggestions;
+        let explanationOfText = result.explanation_of_text;
 
         // изменение цвета - если true то #00671c, если false то #aa0a0a
         
-        document.querySelector('.condition-tense > .condition-name').style.color = is_tense ? '#00671c' : '#aa0a0a';
-        document.querySelector('.condition-pronoun > .condition-name').style.color = is_pronoun ? '#00671c' : '#aa0a0a';
+        document.querySelector('.condition-tense > .condition-name').style.color = isTense ? '#00671c' : '#aa0a0a';
+        document.querySelector('.condition-pronoun > .condition-name').style.color = isPronoun ? '#00671c' : '#aa0a0a';
         
-        if (card_usage !== "null") {
-            document.querySelector('.condition-usage > .condition-name').style.color = is_usage ? '#00671c' : '#aa0a0a';
+        if (cardUsage !== "null") {
+            document.querySelector('.condition-usage > .condition-name').style.color = isUsage ? '#00671c' : '#aa0a0a';
         }
-        if (card_sentence_type !== "null") {
-            document.querySelector('.condition-sentence-type > .condition-name').style.color = is_sentence_type ? '#00671c' : '#aa0a0a';
+        if (cardSentenceType !== "null") {
+            document.querySelector('.condition-sentence-type > .condition-name').style.color = isSentenceType ? '#00671c' : '#aa0a0a';
         }
         
         // изменение цвета для word, pos, definition, correctness
-        document.querySelector('.review-word > .review-name').style.color = is_word ? '#00671c' : '#aa0a0a';
-        document.querySelector('.review-pos > .review-name').style.color = is_pos ? '#00671c' : '#aa0a0a';
-        document.querySelector('.review-definition > .review-name').style.color = is_definition ? '#00671c' : '#aa0a0a';
-        document.querySelector('.review-correctness > .review-name').style.color = grammar_correctness ? '#00671c' : '#aa0a0a';
+        document.querySelector('.review-word > .review-name').style.color = isWord ? '#00671c' : '#aa0a0a';
+        document.querySelector('.review-pos > .review-name').style.color = isPos ? '#00671c' : '#aa0a0a';
+        document.querySelector('.review-definition > .review-name').style.color = isDefinition ? '#00671c' : '#aa0a0a';
+        document.querySelector('.review-correctness > .review-name').style.color = grammarCorrectness ? '#00671c' : '#aa0a0a';
         
         // отображение результата word, pos, definition, correctness
-        document.querySelector('.review-word-value').innerHTML = is_word;
-        document.querySelector('.review-pos-value').innerHTML = is_pos;
-        document.querySelector('.review-definition-value').innerHTML = is_definition;
-        document.querySelector('.review-correctness-value').innerHTML = grammar_correctness;
+        document.querySelector('.review-word-value').innerHTML = isWord;
+        document.querySelector('.review-pos-value').innerHTML = isPos;
+        document.querySelector('.review-definition-value').innerHTML = isDefinition;
+        document.querySelector('.review-correctness-value').innerHTML = grammarCorrectness;
 
         
         // отображение блоков с ревью
@@ -103,50 +105,50 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector('.review-text-block').style.display = 'block';
         
         // отображение правильной версии
-        if (!grammar_correctness) {
+        if (!grammarCorrectness) {
             document.querySelector('.correct-version').style.display = 'inline-block';
-            document.querySelector('.review-correct-version-value').innerHTML = correct_version;
+            document.querySelector('.review-correct-version-value').innerHTML = correctVersion;
         }
         
         // вывод списка ошибок
-        if (errors_with_grammar.length > 0) {
+        if (errorsWithGrammar.length > 0) {
 
             document.querySelector('.grammar-errors').style.display = 'inline-block';
-            let grammar_errors_html = document.querySelector('.review-grammar-errors-value');
+            let grammarErrorsHtml = document.querySelector('.review-grammar-errors-value');
 
             let ul = document.createElement('ul');
-            errors_with_grammar.forEach(suggestion => {
+            errorsWithGrammar.forEach(suggestion => {
                 let li = document.createElement('li');
                 li.textContent = suggestion;
                 ul.appendChild(li);
             });
             
-            grammar_errors_html.innerHTML = '';
-            grammar_errors_html.appendChild(ul);
+            grammarErrorsHtml.innerHTML = '';
+            grammarErrorsHtml.appendChild(ul);
             
         }
 
         // вывод списка предложений по стилю
-        if (style_suggestions.length > 0) {
+        if (styleSuggestions.length > 0) {
 
             document.querySelector('.style-suggestions').style.display = 'inline-block';
-            let style_suggestions_html = document.querySelector('.review-style-suggestions-value');
+            let styleSuggestionsHtml = document.querySelector('.review-style-suggestions-value');
 
             let ul = document.createElement('ul');
-            style_suggestions.forEach(suggestion => {
+            styleSuggestions.forEach(suggestion => {
                 let li = document.createElement('li');
                 li.textContent = suggestion;
                 ul.appendChild(li);
             });
             
-            style_suggestions_html.innerHTML = '';
-            style_suggestions_html.appendChild(ul);
+            styleSuggestionsHtml.innerHTML = '';
+            styleSuggestionsHtml.appendChild(ul);
             
         }
 
         // вывод объяснения
         document.querySelector('.explanation-of-text').style.display = 'inline-block';
-        document.querySelector('.review-explanation-of-text-value').innerHTML = explanation_of_text;
+        document.querySelector('.review-explanation-of-text-value').innerHTML = explanationOfText;
 
         // вывод отправленного текста
         document.querySelector('.sent-text').style.display = 'inline-block';

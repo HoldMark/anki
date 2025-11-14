@@ -2,21 +2,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 {
     // Получаем данные о текущей карточке
-    let card_word = document.querySelector('.condition-block').getAttribute('data-word');
-    let card_pos = document.querySelector('.condition-block').getAttribute('data-pos');
-    let card_def = document.querySelector('.condition-block').getAttribute('data-def');
+    let cardWord = document.querySelector('.condition-block').getAttribute('data-word');
+    let cardPos = document.querySelector('.condition-block').getAttribute('data-pos');
+    let cardDef = document.querySelector('.condition-block').getAttribute('data-def');
 
 
     function requestForTask() {
         // Отправка данных в Python через pycmd
-        data_to_send = JSON.stringify({
+        dataToSend = JSON.stringify({
             action: "task_for_card_with_eng_word",
-            word: card_word,
-            pos: card_pos,
-            definition: card_def
+            word: cardWord,
+            pos: cardPos,
+            definition: cardDef
         });
-        pycmd(data_to_send);
-        console.log("Sent to Python:", data_to_send);
+        pycmd(dataToSend);
+        console.log("Sent to Python:", dataToSend);
     }
 
     function receiveTask(result) {
@@ -24,17 +24,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         console.log("Received from Python:", result);
         
-        let card_tense = result.tense;
-        let card_tense_link = result.obsidian_link;
-        let card_usage = result.usage ? result.usage : "null";
-        let card_sentence = result.sentence_type ? result.sentence_type : "null";
-        let card_pronoun = result.pronoun;
+        let cardTense = result.tense;
+        let cardTenseLink = result.obsidian_link;
+        let cardUsage = result.usage ? result.usage : "null";
+        let cardSentence = result.sentence_type ? result.sentence_type : "null";
+        let cardPronoun = result.pronoun;
 
-        document.querySelector('.condition-tense-value').innerHTML = card_tense;
-        document.querySelector('.condition-tense-value').setAttribute("href", card_tense_link);
-        document.querySelector('.condition-usage-value').innerHTML = card_usage;
-        document.querySelector('.condition-sentence-type-value').innerHTML = card_sentence;
-        document.querySelector('.condition-pronoun-value').innerHTML = card_pronoun;
+        document.querySelector('.condition-tense-value').innerHTML = cardTense;
+        document.querySelector('.condition-tense-value').setAttribute("href", cardTenseLink);
+        document.querySelector('.condition-usage-value').innerHTML = cardUsage;
+        document.querySelector('.condition-sentence-type-value').innerHTML = cardSentence;
+        document.querySelector('.condition-pronoun-value').innerHTML = cardPronoun;
 
         console.log("Implemented data in HTML");
     }
