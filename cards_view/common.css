@@ -21,7 +21,7 @@ a{
 	border: 1px solid #ccc;
 }
 
-.basic-content-wrapper{
+.basic-block-inner-wrapper{
 	position: relative;
 	padding: 35px 20px 35px;
 }

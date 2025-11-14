@@ -4,7 +4,7 @@
 <div class='typing-back-content'>
 
 	<div class='basic-block basic-block-typing'>
-		<div class='basic-content-wrapper'>
+		<div class='basic-block-inner-wrapper'>
 
 			<div class="header-typing">
 				<div class='theme-block'><span>word</span></div>
@@ -13,19 +13,21 @@
 				{{type:word}}
 			</div>
 
-		</div> <!--.basic-content-wrapper-->
+		</div> <!--.basic-block-inner-wrapper-->
 	</div> <!--.basic-block .basic-block-typing-->
 	<br>
 	<div class='basic-block basic-block-definition'>
-		<div class='basic-content-wrapper'>
-			<div class="header-typing">
+		<div class='basic-block-inner-wrapper'>
+
+			<div class="header-definition">
 				<div class='sense-block'>
 					<span class="sense-span">{{sense}}</span>
 					<span class="pos-span">{{part_of_speach}}</span>
 					<span class="trans-span">{{trans}} {{trans_type}}</span>
 				</div> <!--.sense-block-->
-			</div> <!--.header-typing-->
-			<div class="body-typing">
+			</div> <!--.header-definition-->
+
+			<div class="body-definition">
 				<div class="definition-text-block">
 					<span class="definition-span">{{definition}}</span>
 				</div> <!--.definition-text-block-->
@@ -50,8 +52,9 @@
 						</a>
 					</div>
 				</div><!--.button-block-->
-			</div> <!--.body-typing-->
-		</div> <!--.basic-content-wrapper-->
+			</div> <!--.body-definition-->
+
+		</div> <!--.basic-block-inner-wrapper-->
 	</div> <!--.basic-block .basic-block-definition-->
 
 </div> <!--.typing-back-content-->

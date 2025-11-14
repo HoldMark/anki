@@ -1,0 +1,9 @@
+<!--
+
+...-content - определяет карточку (definition-back-content)
+
+basic-block-... - определяет блок в зависимости от внутреннего содержания (basic-block-definition)
+header-definition - определяет заголовок блока в зависимости от внутреннего содержания блока (header-definition)
+body-definition - определяет тело блока в зависимости от внутреннего содержания блока (body-definition)
+
+-->
