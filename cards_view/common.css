@@ -209,6 +209,10 @@ a{
 }
 /*---- REVIEW RESULT BLOCK END ----*/
 
+.basic-block-image{
+    margin-top: 22px;
+}
+
 .img-block {
     width: 100%;
     display: flex;
