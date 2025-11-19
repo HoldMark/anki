@@ -22,7 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     let mainExNode = document.querySelector('.main-example-span');
-    mainExNode.innerHTML = mainExample;
+
+    if (mainExNode){
+        mainExNode.innerHTML = mainExample;
+        console.log("added main example");
+    }
+
 
 
     // remove all empty <li> and main example
@@ -37,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         else if (item.innerHTML == mainExample){
             item.remove();
         }
+        console.log("removed empty li");
     });
 
 
@@ -44,13 +50,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     listItems = document.querySelectorAll('li');
 
-    let ulItem = document.querySelector('ul')
-    let hrItem = document.querySelector('hr')
-
+    let exampleBlock = document.querySelector('.example-block');
+    let hrBeforeExampleBlock = document.querySelector('.hr-before-example-block');
 
     if (listItems.length == 0){
-        ulItem.remove();
-        hrItem.remove();
+        if (exampleBlock){
+            exampleBlock.remove();
+            console.log("removed example block");
+        }
+        if (hrBeforeExampleBlock){
+            hrBeforeExampleBlock.remove();
+            console.log("removed hr before example block");
+        }
     }
 
 }
