@@ -68,10 +68,14 @@ a {
 
 .sense-span {
 	color: #00529B;
+	margin-right: 5px;
+}
+
+.sense-span:empty {
+    margin-right: 0;
 }
 
 .pos-span {
-	margin-left: 5px;
 	text-transform: capitalize;
 }
 
