@@ -1,5 +1,6 @@
 <script src="sentence-examples.js"></script>
 <script src="remove-empty-image-block.js"></script>
+<script src="set-image-title.js"></script>
 
 <div class="word-front-content">
 
@@ -41,8 +42,9 @@
 
 	<div class="basic-block basic-block-image">
 		<div class="basic-block-inner-wrapper">
-			<div class="img-block">
+			<div class="img-block" data-word="{{word}}">
 				{{picture}}
+				<div class="img-caption"></div>
 			</div>
 		</div> <!--.basic-block-inner-wrapper-->
 	</div> <!--.basic-block .basic-block-image-->

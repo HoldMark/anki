@@ -128,7 +128,7 @@ a {
 	padding-left: 10px;
 }
 
-.replay-button {
+.replay-button {  /* anki object */
 	width: 100%;
 	height: 100%;
 }
@@ -156,6 +156,18 @@ a {
 }
 .img-block img {
 	width: 200px;
+}
+
+.img-caption {
+    position: absolute;
+    padding: 4px 8px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 14px;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.2s;
+    letter-spacing: 1px;
 }
 
 /*---- IMAGE BLOCK END ----*/
@@ -211,7 +223,7 @@ a {
 
 /*OTHER START*/
 
-.after-buttons {
+.hr-after-button-block {
 	margin-top: 20px;
 }
 
