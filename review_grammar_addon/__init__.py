@@ -1,6 +1,6 @@
 import json
 from aqt import gui_hooks
-from .data.parse_data import parse_data
+from .data.parse_data import DataToReview
 from .data.base_request_data import get_base_request_data
 from .gemini_client import gemini_client
 
@@ -18,8 +18,8 @@ def task_router(handled, message, context):
 
     if data.pop("action") == "check grammar and other":
 
-        parsed_data = parse_data(**data)
-        data = get_base_request_data(parsed_data)
+        data_to_review = DataToReview(**data)
+        data = get_base_request_data(data_to_review.dict_view())
         content = gemini_client.generate_content(data)
 
         if content == "Got an error":

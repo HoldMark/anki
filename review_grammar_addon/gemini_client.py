@@ -36,11 +36,11 @@ class GeminiClient:
     @property
     def headers(self):
         return {
-                'Content-Type': 'application/json',
-                'x-goog-api-key': GOOGLE_API_KEY,
-                'user-agent': 'google-genai-sdk/1.43.0 gl-python/3.12.3', 
-                'x-goog-api-client': 'google-genai-sdk/1.43.0 gl-python/3.12.3'
-            }
+            'Content-Type': 'application/json',
+            'x-goog-api-key': GOOGLE_API_KEY,
+            'user-agent': 'google-genai-sdk/1.43.0 gl-python/3.12.3',
+            'x-goog-api-client': 'google-genai-sdk/1.43.0 gl-python/3.12.3'
+        }
 
 
 gemini_client = GeminiClient()

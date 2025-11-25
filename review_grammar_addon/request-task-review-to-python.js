@@ -31,22 +31,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         console.log("Data collected for sending to Python");
 
-    function sendDataToPython() {
-        // Отправка данных в Python через pycmd
-        dataToPython = JSON.stringify({
-            action: "check grammar and other",
-            word: cardWord,
-            pos: cardPos,
-            definition: cardDef,
-            tense: cardTense,
-            usage: cardUsage,
-            sentence_type: cardSentenceType,
-            card_pronoun: cardPronoun,
-            sentence: fieldValue,
-        }); 
-        pycmd(dataToPython);
-        console.log("Sent to Python:", dataToPython);
-      }
+        function sendDataToPython() {
+            // Отправка данных в Python через pycmd
+            dataToPython = JSON.stringify({
+                action: "check grammar and other",
+                word: cardWord,
+                pos: cardPos,
+                definition: cardDef,
+                tense: cardTense,
+                usage: cardUsage,
+                sentence_type: cardSentenceType,
+                pronoun: cardPronoun,
+                text: fieldValue,
+            });
+            pycmd(dataToPython);
+            console.log("Sent to Python:", dataToPython);
+        }
         sendDataToPython();
     }
     function receiveReviewResponse(result) {
