@@ -28,6 +28,10 @@ TABLE OF CONTENTS:
 	width: 70%;
 }
 
+#typeans {
+    line-height: 1;
+}
+
 a {
 	color: #000
 }
