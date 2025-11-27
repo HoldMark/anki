@@ -1,12 +1,4 @@
-pronouns = {
-    "I": 1,
-    "he": 2,
-    "she": 2,
-    "it": 2,
-    "they": 1,
-    "we": 1,
-    "you": 1
-}
+pronouns = {"I": 1, "he": 2, "she": 2, "it": 2, "they": 1, "we": 1, "you": 1}
 
 sentence_types = {
     "affirmative sentences": 1,
@@ -22,12 +14,10 @@ obsidian_links = {
     "present simple": "obsidian://open?vault=main&file=present%20indefinite%20form%20of%20the%20verb",
     "present perfect": "obsidian://open?vault=main&file=present%20perfect%20tense",
     "present perfect continuous": "obsidian://open?vault=main&file=present%20perfect%20continuous%20form%20of%20the%20verb",
-
     "past simple": "obsidian://open?vault=main&file=past%20indefinite%20form%20of%20the%20verb",
     "past continuous": "obsidian://open?vault=main&file=past%20continuous%20form%20of%20the%20verb",
     "past perfect": "obsidian://open?vault=main&file=past%20perfect%20tense",
     "past perfect continuous": "obsidian://open?vault=main&file=past%20perfect%20continuous%20tense",
-
     "future simple": "obsidian://open?vault=main&file=future%20indefinite%20tense",
     "future continuous": "obsidian://open?vault=main&file=future%20continuous%20tense",
     "future perfect": "obsidian://open?vault=main&file=future%20perfect%20indefinite%20tense",
@@ -39,12 +29,10 @@ tenses = {
     "present simple": 1,
     "present perfect": 1,
     "present perfect continuous": 2,
-
     "past simple": 3,
     "past continuous": 4,
     "past perfect": 3,
     "past perfect continuous": 0,
-
     "future simple": 0,
     "future continuous": 0,
     "future perfect": 0,
@@ -61,7 +49,7 @@ usages = {
         "unnatural, unusual action or state that is temporary": 1,
         "used to add emotional coloring to continuously repeated (actions/states)": 1,
         "used to add emotional coloring to constant, repeated, unplanned or undesired (actions/states)": 1,
-        "to show that we have already decided something and usually that we have already made a plan or arrangements": 1
+        "to show that we have already decided something and usually that we have already made a plan or arrangements": 1,
     },
     "present simple": {
         "to express a repeated action or to state a permanent characteristic that describes an object or phenomenon in the present or in an absolute sense": 5,
@@ -83,10 +71,10 @@ usages = {
         "to talk about a finished event or state in the very recent past in order to emphasize the current state (The Nearest Past)": 2,
         "to talk about experiences up to now": 2,
         "for a unique experience when we are using a superlative": 2,
-        "with \"the first time\" when we’re talking about an immediate, continuing or recent event": 2,
+        'with "the first time" when we’re talking about an immediate, continuing or recent event': 2,
         "to tell the news/current state": 2,
         "in newspaper headlines or TV news programmes to report a recent past event": 1,
-        "to introduce an \"open\" general point about something (in question or statement)": 2,
+        'to introduce an "open" general point about something (in question or statement)': 2,
         "to talk about a present situation that began at a specific point in the past and is still going on in the present": 2,
         "to express simultaneous ongoing actions": 2,
         "to ask about the duration of a state or activity": 2,
@@ -132,13 +120,12 @@ usages = {
         "to indicate an action/state in the past in the subjunctive mood II": 1,
         "to refer to situations which have changed": 1,
         "some special patterns: `I hadn't + V3… , when`:": 1,
-        "instead of past perfect continuous with stative verbs": 1
-    }
+        "instead of past perfect continuous with stative verbs": 1,
+    },
 }
 
 
 if __name__ == "__main__":
-
     tenses_sum = sum(filter(lambda x: x > 0, tenses.values()))
 
     for tense, usages_ in usages.items():
@@ -146,5 +133,5 @@ if __name__ == "__main__":
 
         summ = sum(usages_.values())
         for key, value in usages_.items():
-            print(f"\t{key[:25]}..: {value}/{summ} = {round((value/summ) * 100, 2)}%")
+            print(f"\t{key[:25]}..: {value}/{summ} = {round((value / summ) * 100, 2)}%")
         print()

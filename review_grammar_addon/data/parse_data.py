@@ -1,5 +1,4 @@
 class DataToReview:
-
     def __init__(self, **kwargs):
         self.word = kwargs["word"]
         self.pos = kwargs["pos"]

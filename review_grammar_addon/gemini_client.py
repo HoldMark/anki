@@ -1,5 +1,6 @@
-import urllib.request
 import json
+import urllib.request
+
 from .config.read_env import GOOGLE_API_KEY
 
 
@@ -11,10 +12,7 @@ class GeminiClient:
         data = json.dumps(data).encode("utf-8")
         print(f"data: {data}")
         req = urllib.request.Request(
-            url=self.URL + self.BASEMODEL + ":generateContent",
-            data=data,
-            headers=self.headers,
-            method="POST"
+            url=self.URL + self.BASEMODEL + ":generateContent", data=data, headers=self.headers, method="POST"
         )
 
         # Отправляем и читаем ответ
@@ -36,10 +34,10 @@ class GeminiClient:
     @property
     def headers(self):
         return {
-            'Content-Type': 'application/json',
-            'x-goog-api-key': GOOGLE_API_KEY,
-            'user-agent': 'google-genai-sdk/1.43.0 gl-python/3.12.3',
-            'x-goog-api-client': 'google-genai-sdk/1.43.0 gl-python/3.12.3'
+            "Content-Type": "application/json",
+            "x-goog-api-key": GOOGLE_API_KEY,
+            "user-agent": "google-genai-sdk/1.43.0 gl-python/3.12.3",
+            "x-goog-api-client": "google-genai-sdk/1.43.0 gl-python/3.12.3",
         }
 
 

@@ -1,5 +1,4 @@
 class BaseResponseModel:
-
     @classmethod
     def schema(cls) -> dict:
         convert = {
@@ -30,7 +29,7 @@ class BaseResponseModel:
                 "property_ordering": properties_list,
                 "required": properties_list,
                 "title": cls.__name__,
-                "type": "OBJECT"
+                "type": "OBJECT",
             }
         }
         return res

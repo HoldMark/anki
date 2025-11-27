@@ -1,6 +1,7 @@
 import random
 from datetime import datetime
-from .english_data import tenses, usages, sentence_types, pronouns, obsidian_links
+
+from .english_data import tenses, usages, pronouns, obsidian_links, sentence_types
 
 
 def string_to_number(s: str) -> int:
@@ -11,9 +12,8 @@ def string_to_number(s: str) -> int:
 
 
 def create_task(**kwargs) -> dict:
-
     word = kwargs["word"]
-    pos = kwargs["pos"]
+    # pos = kwargs["pos"]
     definition = kwargs["definition"]
 
     # create a seed

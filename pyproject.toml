@@ -2,3 +2,42 @@
 name = "Anki"
 description = "This project provides some tools that could be helpful for learning something with Anki"
 requires-python = ">=3.13.5"
+
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+output-format = "concise"
+
+exclude = [
+    ".git",
+    "__pycache__",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    "reports",
+    "logs",
+    "sandbox",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle (ошибки стиля)
+    "W",    # pycodestyle (предупреждения стиля)
+    "F",    # pyflakes (неиспользуемый импорт, переменные и т.д.)
+    "I",    # isort (импорты)
+    "B",    # flake8-bugbear
+    "UP",   # pyupgrade (современный синтаксис)
+    "N",    # pep8-naming (соглашения по именованию)
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+length-sort = true
+
+[tool.ruff.lint.per-file-ignores]
+"cards_view" = ["ALL"]
+"data" = ["ALL"]
+"parse_words" = ["ALL"]
+"create_task_addon/english_data.py" = ["E501"]
+"review_grammar_addon/data/prompts.py" = ["E501"]
