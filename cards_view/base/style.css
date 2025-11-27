@@ -1,0 +1,39 @@
+*{
+	box-sizing: border-box;
+}
+
+.card {
+	font-family: arial;
+	font-size: 20px;
+  color: black;
+  background-color: white;
+	margin: 100px auto;
+	width: 70%;
+}
+
+.main_block{
+	border: 1px solid #ccc;
+}
+
+.inner_wrapper{
+	position: relative;
+	padding: 35px 20px 35px;
+}
+
+.theme_block{
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	color: #ccc;
+	font-size: 15px;
+}
+
+.question_span span{
+	font-family: monospace;
+	color: #fb7910;
+}
+
+.answer_span span{
+	font-family: monospace;
+	color: #fb7910;
+}
