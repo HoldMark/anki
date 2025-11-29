@@ -7,9 +7,7 @@ with open(ROOT_PATH / "pyproject.toml", "rb") as f:
 
 
 class LoggerConfig:
-
     def __init__(self, config):
-
         logger_default = config["tool"]["logging"]["default"]
 
         self.format = {

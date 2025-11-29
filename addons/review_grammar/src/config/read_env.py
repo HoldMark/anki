@@ -1,9 +1,8 @@
 import os
-from pathlib import Path
 
-current_file = Path(__file__)
-ROOT_DIR = current_file.parent.parent
-env_path = ROOT_DIR / ".env"
+from ..utils.path import ROOT_PATH
+
+env_path = ROOT_PATH / ".env"
 
 
 def load_env(file_path):
@@ -15,5 +14,5 @@ def load_env(file_path):
                 os.environ[key] = value
 
 
-load_env(env_path)
+load_env(ROOT_PATH)
 GOOGLE_API_KEY = os.environ.get("goog-api-key")

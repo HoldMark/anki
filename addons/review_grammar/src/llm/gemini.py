@@ -1,11 +1,11 @@
-import requests
-from requests import Response
 from json import JSONDecodeError
 
-from .config.read_env import GOOGLE_API_KEY
-from .utils.logs.logger import get_logger
-from .utils.logs.api_logs import logging as log
+import requests
+from requests import Response
 
+from ..config.read_env import GOOGLE_API_KEY
+from ..utils.logs.logger import get_logger
+from ..utils.logs.api_logs import logging as log
 
 logger = get_logger(__name__)
 
@@ -32,7 +32,7 @@ class GeminiClient:
 
         try:
             return result.json()
-        except JSONDecodeError as e:
+        except JSONDecodeError:
             return "Got an error"
 
     @property

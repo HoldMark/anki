@@ -2,11 +2,10 @@ import json
 
 from aqt import gui_hooks
 
-from .gemini_client import gemini_client
-from .data.parse_data import DataToReview
-from .data.base_request_data import get_base_request_data
-from .utils.logs.logger import get_logger
-
+from .src.llm.gemini import gemini_client
+from .src.data.parse_data import DataToReview
+from .src.utils.logs.logger import get_logger
+from .src.data.base_request_data import get_base_request_data
 
 logger = get_logger("init")
 
@@ -18,7 +17,7 @@ def task_router(handled, message, context):
 
     try:
         data = json.loads(message)
-    except Exception as e:
+    except Exception:
         return handled  # пробрасываем дальше
 
     if data.pop("action") == "check grammar and other":
