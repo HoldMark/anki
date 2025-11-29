@@ -3,6 +3,13 @@ name = "Anki"
 description = "This project provides some tools that could be helpful for learning something with Anki"
 requires-python = ">=3.13.5"
 
+[tool.logging.default]
+format = "# {levelname:<8} | {asctime}.{msecs:03.0f} | {name:<15} | {lineno:^4} | {message}"
+datefmt = "%d.%m.%Y %H:%M:%S"
+style = "{"
+stream = 1
+request_headers = 1  # Enable logging http request headers: 1 = on, 0 = off
+response_headers = 0 # Enable logging http response headers: 1 = on, 0 = off
 
 [tool.ruff]
 line-length = 120
