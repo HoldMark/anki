@@ -1,6 +1,7 @@
 import random
 from datetime import datetime
 
+from ..utils.logs.func import log
 from ..data.english_data import tenses, usages, pronouns, obsidian_links, sentence_types
 
 
@@ -11,10 +12,15 @@ def string_to_number(s: str) -> int:
     return r
 
 
-def create_task(**kwargs) -> dict:
-    word = kwargs["word"]
+@log
+def create_task(data: dict) -> dict:
+    """
+    Create a task for learning English words and grammar.
+    """
+
+    word = data["word"]
     # pos = kwargs["pos"]
-    definition = kwargs["definition"]
+    definition = data["definition"]
 
     # create a seed
     today = datetime.today()
