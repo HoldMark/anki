@@ -4,6 +4,7 @@ from aqt import gui_hooks
 
 from .src.llm.gemini import gemini_client
 from .src.data.parse_data import DataToReview
+from .src.core.create_task import create_task
 from .src.utils.logs.logger import get_logger
 from .src.data.base_request_data import get_base_request_data
 
@@ -20,7 +21,15 @@ def task_router(handled, message, context):
     except Exception:
         return handled  # пробрасываем дальше
 
-    if data.pop("action") == "check grammar and other":
+    action = data.pop("action")
+
+    if action == "task_for_card_with_eng_word":
+        result = create_task(**data)
+        if hasattr(context, "web"):
+            context.web.eval(f"receiveTask({json.dumps(result)});")
+        return True, None
+
+    if action == "check grammar and other":
         logger.info("Received data to review from JS")
         logger.debug(f"Received data: {data}")
 

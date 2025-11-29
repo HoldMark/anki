@@ -1,7 +1,7 @@
 import random
 from datetime import datetime
 
-from .english_data import tenses, usages, pronouns, obsidian_links, sentence_types
+from ..data.english_data import tenses, usages, pronouns, obsidian_links, sentence_types
 
 
 def string_to_number(s: str) -> int:
