@@ -1,8 +1,10 @@
-import json
-import urllib.request
+import requests
+from requests import Response
+from json import JSONDecodeError
 
 from .config.read_env import GOOGLE_API_KEY
 from .utils.logs.logger import get_logger
+from .utils.logs.api_logs import logging as log
 
 
 logger = get_logger(__name__)
@@ -12,27 +14,25 @@ class GeminiClient:
     URL = "https://generativelanguage.googleapis.com/v1beta/models/"
     BASEMODEL = "gemini-2.5-flash"
 
-    def generate_content(self, data: dict):
-        data = json.dumps(data).encode("utf-8")
-        logger.debug(f"Got data in generate_content: {data}")
-        req = urllib.request.Request(
-            url=self.URL + self.BASEMODEL + ":generateContent", data=data, headers=self.headers, method="POST"
+    @log("Request (Gemini)")
+    def _request(self, data: dict, url: str, headers: dict) -> Response:
+        logger.info("Sending request...")
+        result = requests.post(
+            url=url,
+            headers=headers,
+            json=data,
         )
+        return result
 
-        # Отправляем и читаем ответ
+    def generate_content(self, data: dict, model: str = None):
+        model = model or self.BASEMODEL
+        url = self.URL + model + ":generateContent"
+
+        result = self._request(data, url=url, headers=self.headers)
+
         try:
-            with urllib.request.urlopen(req) as response:
-                body = response.read().decode("utf-8")
-                headers = response.headers
-                status_code = response.status
-
-                logger.debug(f"body: {body}")
-                logger.debug(f"headers: {headers}")
-                logger.debug(f"status_code: {status_code}")
-
-                return json.loads(body)
-        except Exception as e:
-            logger.debug("Got an error while reading the response")
+            return result.json()
+        except JSONDecodeError as e:
             return "Got an error"
 
     @property
