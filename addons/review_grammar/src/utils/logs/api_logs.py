@@ -6,7 +6,7 @@ from functools import wraps
 from urllib.parse import parse_qs
 
 from .logger import get_logger
-from addons.review_grammar.src.config.config_loader import logger_config
+from ...config.config_loader import logger_config
 
 
 logger = get_logger(__name__)

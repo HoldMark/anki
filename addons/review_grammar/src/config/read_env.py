@@ -14,5 +14,5 @@ def load_env(file_path):
                 os.environ[key] = value
 
 
-load_env(ROOT_PATH)
+load_env(env_path)
 GOOGLE_API_KEY = os.environ.get("goog-api-key")
