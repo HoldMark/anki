@@ -5,6 +5,10 @@ from aqt import gui_hooks
 from .gemini_client import gemini_client
 from .data.parse_data import DataToReview
 from .data.base_request_data import get_base_request_data
+from .utils.logs.logger import get_logger
+
+
+logger = get_logger("init")
 
 
 def task_router(handled, message, context):
@@ -15,10 +19,12 @@ def task_router(handled, message, context):
     try:
         data = json.loads(message)
     except Exception as e:
-        print("Ошибка JSON:", e)
         return handled  # пробрасываем дальше
 
     if data.pop("action") == "check grammar and other":
+        logger.info("Received data to review from JS")
+        logger.debug(f"Received data: {data}")
+
         data_to_review = DataToReview(**data)
         data = get_base_request_data(data_to_review.dict_view())
         content = gemini_client.generate_content(data)
@@ -30,7 +36,10 @@ def task_router(handled, message, context):
             text_json = json.loads(text_raw)
 
         if hasattr(context, "web"):
-            context.web.eval(f"receiveReviewResponse({json.dumps(text_json)});")
+            result = json.dumps(text_json)
+            logger.info("Sending review response to JS")
+            logger.debug(f"Review response: {result}")
+            context.web.eval(f"receiveReviewResponse({result});")
 
         return True, None
 

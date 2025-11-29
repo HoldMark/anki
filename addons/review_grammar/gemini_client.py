@@ -2,6 +2,10 @@ import json
 import urllib.request
 
 from .config.read_env import GOOGLE_API_KEY
+from .utils.logs.logger import get_logger
+
+
+logger = get_logger(__name__)
 
 
 class GeminiClient:
@@ -10,7 +14,7 @@ class GeminiClient:
 
     def generate_content(self, data: dict):
         data = json.dumps(data).encode("utf-8")
-        print(f"data: {data}")
+        logger.debug(f"Got data in generate_content: {data}")
         req = urllib.request.Request(
             url=self.URL + self.BASEMODEL + ":generateContent", data=data, headers=self.headers, method="POST"
         )
@@ -22,13 +26,13 @@ class GeminiClient:
                 headers = response.headers
                 status_code = response.status
 
-                print(f"body: {body}")
-                print(f"headers: {headers}")
-                print(f"status_code: {status_code}")
+                logger.debug(f"body: {body}")
+                logger.debug(f"headers: {headers}")
+                logger.debug(f"status_code: {status_code}")
 
                 return json.loads(body)
         except Exception as e:
-            print(e)
+            logger.debug("Got an error while reading the response")
             return "Got an error"
 
     @property
