@@ -102,6 +102,10 @@ a {
 	background: rgb(204, 204, 204, .5)
 }
 
+.word-info-block span:empty {
+    display: none;
+}
+
 /* MORE INFO END */
 
 /* BUTTONS START */

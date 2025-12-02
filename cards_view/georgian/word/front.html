@@ -1,0 +1,64 @@
+<script src="sentence-examples.js"></script>
+<script src="remove-empty-image-block.js"></script>
+<script src="set-image-title.js"></script>
+
+<div class="word-front-content">
+
+	<div class="basic-block basic-block-word">
+		<div class="basic-block-inner-wrapper">
+			<div class="header-word">
+				<!--<div class="theme-block"><span></span></div>-->
+			</div>
+
+			<div class="body-word">
+
+				<div class="word-in-main-example-block">
+					<span class="main-example-span">{{example_1}}</span>
+				</div>
+				<hr>
+				<div class="word-info-block">
+					<a href="https://dictionary.cambridge.org/dictionary/english/{{word}}"><span class="">{{word}}</span></a>
+					<span class="">{{trans}}</span>
+					<span class="">{{part_of_speach}}</span>
+				</div><!--.word-info-block-->
+				<hr>
+				<div class="button-block">
+
+					<div class="button-audio-block">
+						<span class="audio-span">{{audio}}</span>
+					</div>
+					<div class="button-video-block">
+						<a href="https://youglish.com/pronounce/{{word}}/english/uk">
+							<span class="youglish-link">YouGlish</span>
+						</a>
+					</div>
+
+				</div><!--.button-block-->
+			</div>
+
+		</div> <!--.basic-block-inner-wrapper-->
+	</div> <!--.basic-block .basic-block-word-->
+
+	<div class="basic-block basic-block-image">
+		<div class="basic-block-inner-wrapper">
+			<div class="img-block" data-word="{{word}}">
+				{{picture}}
+				<div class="img-caption"></div>
+			</div>
+		</div> <!--.basic-block-inner-wrapper-->
+	</div> <!--.basic-block .basic-block-image-->
+
+
+	<!-- needs that to display main example -->
+
+	<span class="hidden-example">{{example_1}}</span>
+	<span class="hidden-example">{{example_2}}</span>
+	<span class="hidden-example">{{example_3}}</span>
+	<span class="hidden-example">{{example_4}}</span>
+	<span class="hidden-example">{{example_5}}</span>
+	<span class="hidden-example">{{example_6}}</span>
+	<span class="hidden-example">{{example_7}}</span>
+
+	<!-- needs that to display main example -->
+
+</div> <!--.word-front-content-->
