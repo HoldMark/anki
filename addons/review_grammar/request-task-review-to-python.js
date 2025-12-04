@@ -20,6 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let fieldValue = document.querySelector("#typeans")?.value;
 
+        if (fieldValue.length < 10) {
+            alert("Error: The answer is too short!");
+            console.log("Error: The answer is too short!");
+            return;
+        }
+
         let cardWord = document.querySelector('.condition-block').getAttribute('data-word');
         let cardPos = document.querySelector('.condition-block').getAttribute('data-pos');
         let cardDef = document.querySelector('.condition-block').getAttribute('data-def');
