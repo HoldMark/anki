@@ -1,6 +1,7 @@
 from copy import deepcopy
-from ..tables.reviews import ReviewsTable
+
 from ...data.models import ReviewResponseModel
+from ..tables.reviews import ReviewsTable
 
 
 class ReviewService:

@@ -2,16 +2,13 @@ import sqlite3
 import textwrap
 from sqlite3 import Connection
 
-
 from ..utils.logs.func import log
 from ..utils.logs.logger import get_logger
-
 
 logger = get_logger(__name__)
 
 
 class Database:
-
     def __init__(self, name):
         self._NAME = name
         self._connection: Connection | None = None
@@ -39,7 +36,7 @@ class Database:
     @log
     def execute(self, sql: str, params: dict | tuple = ()) -> int | None:
         """
-        Метод для изменения данных в БД. Для таких запросов как INSERT, UPDATE, DELETE, CREATE TABLE, DROP TABLE, ALTER TABLE
+        Метод для изменения данных в БД. Для таких запросов как INSERT, UPDATE, DELETE, CREATE TABLE, DROP TABLE и т.д.
         1. фиксирует изменения (conn.commit())
         2. не возвращает данных
         3. для команд, где важен побочный эффект, а не результат чтения
@@ -51,8 +48,8 @@ class Database:
             conn.commit()
             if sql.startswith("INSERT"):
                 return cursor.lastrowid
-        except Exception as e:
-            logger.error(f"Got error while changing data in the database", exc_info=True)
+        except Exception:
+            logger.error("Got error while changing data in the database", exc_info=True)
             return None
         else:
             return 1
@@ -75,8 +72,8 @@ class Database:
             rows = cursor.fetchall()
             return [dict(row) for row in rows]
 
-        except Exception as e:
-            logger.error(f"Got error while reading data from the database", exc_info=True)
+        except Exception:
+            logger.error("Got error while reading data from the database", exc_info=True)
             return None
 
         finally:
@@ -86,8 +83,8 @@ class Database:
     def table_names(self) -> set[str] | None:
         """Returns a set of table names"""
         query = textwrap.dedent("""
-            SELECT name 
-            FROM sqlite_master 
+            SELECT name
+            FROM sqlite_master
             WHERE type='table';
         """)
 
@@ -119,7 +116,6 @@ class Database:
             return None
 
         if not are_created:
-
             counter = 0
 
             for table in tables:

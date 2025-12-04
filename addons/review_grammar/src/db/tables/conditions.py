@@ -1,4 +1,5 @@
 import textwrap
+
 from ._table import Table
 
 

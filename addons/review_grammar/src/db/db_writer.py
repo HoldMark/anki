@@ -1,20 +1,16 @@
 import os
+
 from aqt import mw
 
-
 from .database import Database
-
-from .tables.words import WordsTable
-from .tables.reviews import ReviewsTable
-from .tables.conditions import ConditionsTable
-
-from .service.word import WordService
-from .service.review import ReviewService
-from .service.condition import ConditionService
-
-from ..data.parse_data import DataToReview
 from ..data.models import ReviewResponseModel
-
+from .service.word import WordService
+from .tables.words import WordsTable
+from .service.review import ReviewService
+from .tables.reviews import ReviewsTable
+from ..data.parse_data import DataToReview
+from .service.condition import ConditionService
+from .tables.conditions import ConditionsTable
 
 db_path = "anki.sqlite"
 
@@ -52,5 +48,4 @@ def store(data: DataToReview, review: ReviewResponseModel):
 
 
 if __name__ == "__main__":
-
     """ Just for local testing """

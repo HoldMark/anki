@@ -1,9 +1,9 @@
 import textwrap
+
 from ._table import Table
 
 
 class WordsTable(Table):
-
     _CREATION_QUERY = textwrap.dedent("""
         CREATE TABLE IF NOT EXISTS words (
             id INTEGER PRIMARY KEY AUTOINCREMENT,

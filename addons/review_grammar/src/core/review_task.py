@@ -1,6 +1,8 @@
 import json
 
 from ..llm.gemini import gemini_client
+from ..data.models import ReviewResponseModel
+from ..db.db_writer import store
 from ..data.parse_data import DataToReview
 from ..utils.logs.func import log
 from ..data.base_request_data import get_base_request_data
@@ -17,5 +19,6 @@ def review_task(data: dict) -> dict:
     if content != "Got an error":
         raw_text = content["candidates"][0]["content"]["parts"][0]["text"]
         result = json.loads(raw_text)
+        store(data_to_review, ReviewResponseModel(**result))
 
     return result

@@ -1,9 +1,9 @@
 from datetime import datetime
+
 from ..database import Database
 
 
 class Table:
-
     """Base class for all tables"""
 
     _CREATION_QUERY = ""

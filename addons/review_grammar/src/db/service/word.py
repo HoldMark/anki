@@ -1,4 +1,5 @@
 from copy import deepcopy
+
 from ..tables.words import WordsTable
 
 
