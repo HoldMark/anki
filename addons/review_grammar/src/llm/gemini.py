@@ -17,7 +17,6 @@ class GeminiClient:
 
     @log("Request (Gemini)")
     def _request(self, data: dict, url: str, headers: dict) -> Response:
-        logger.info("Sending request...")
         result = requests.post(
             url=url,
             headers=headers,
