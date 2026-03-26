@@ -1,8 +1,0 @@
-{
-    "decks": [
-        "1_english::without_group::typing",
-        "3_math::multiplication_table"
-    ],
-    "check_version": true,
-    "required_versions": ["25.09.2"]
-}
