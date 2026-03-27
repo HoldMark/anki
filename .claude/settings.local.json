@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:ai.google.dev)",
-      "WebFetch(domain:console.groq.com)"
+      "WebFetch(domain:console.groq.com)",
+      "Bash(source venv/bin/activate)",
+      "Bash(python -c \":*)",
+      "Bash(pip install:*)",
+      "Bash(python -m spacy download en_core_web_sm)"
     ]
   }
 }
