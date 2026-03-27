@@ -1,6 +1,6 @@
 import json
 
-from ..llm.gemini import gemini_client
+from ..llm.gemini import gemini_client, GeminiClient
 from ..data.models import ReviewResponseModel
 from ..db.db_writer import store
 from ..data.parse_data import DataToReview
@@ -14,9 +14,12 @@ def review_task(data: dict) -> dict:
     data = get_base_request_data(data_to_review.dict_view())
     content = gemini_client.generate_content(data)
 
+    if content == GeminiClient.RATE_LIMIT_ERROR:
+        return {"result": "Rate limit exceeded"}
+
     result = {"result": "Error"}
 
-    if content != "Got an error":
+    if content != GeminiClient.ERROR:
         raw_text = content["candidates"][0]["content"]["parts"][0]["text"]
         result = json.loads(raw_text)
         store(data_to_review, ReviewResponseModel(**result))
