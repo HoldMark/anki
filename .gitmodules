@@ -1,3 +1,6 @@
 [submodule "addons/error_cooldown"]
 	path = addons/error_cooldown
 	url = https://github.com/HoldMark/error-cooldown-anki.git
+[submodule "pdf2text"]
+	path = pdf2text
+	url = https://github.com/HoldMark/pdf2text.git
