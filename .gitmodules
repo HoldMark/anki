@@ -7,3 +7,6 @@
 [submodule "addons/grammar_drill"]
 	path = addons/grammar_drill
 	url = https://github.com/HoldMark/grammar-drill-anki.git
+[submodule "lexicon-scraper"]
+	path = lexicon-scraper
+	url = https://github.com/HoldMark/lexicon-scraper.git
