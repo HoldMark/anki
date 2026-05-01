@@ -31,7 +31,7 @@ def create_task(data: dict) -> dict:
     random.seed(seed)
 
     # tense
-    tenses = weights.keys()
+    tenses = list(weights.keys())
     chances_of_tenses = [i["chance"] for i in weights.values()]
     chosen_tense = random.choices(tenses, weights=chances_of_tenses, k=1)[0]
     res_obsidian_link = obsidian_links[chosen_tense]
@@ -45,8 +45,8 @@ def create_task(data: dict) -> dict:
 
     # sentence types & usages
     if type_or_usage == "type":
-        stk = list(chosen_tense["sentence_types"].keys())
-        stv = list(chosen_tense["sentence_types"].values())
+        stk = list(weights[chosen_tense]["sentence_types"].keys())
+        stv = list(weights[chosen_tense]["sentence_types"].values())
         res_sentence_type = random.choices(stk, weights=stv, k=1)[0]
         res_usage = None
     else:
