@@ -4,6 +4,6 @@
 [submodule "pdf2text"]
 	path = pdf2text
 	url = https://github.com/HoldMark/pdf2text.git
-[submodule "addons/review_grammar"]
+[submodule "addons/grammar_drill"]
 	path = addons/grammar_drill
 	url = https://github.com/HoldMark/grammar-drill-anki.git
