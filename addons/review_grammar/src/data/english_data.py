@@ -1,14 +1,5 @@
 pronouns = {"I": 1, "he": 2, "she": 2, "it": 2, "they": 1, "we": 1, "you": 1}
 
-sentence_types = {
-    "affirmative sentences": 1,
-    "negative sentences": 1,
-    "interrogative sentences": 1,
-    "interrogative-negative sentences in a formal style": 1,
-    "interrogative-negative sentences in an informal style": 1,
-    "interrogative sentences with a question word": 1,
-}
-
 obsidian_links = {
     "present continuous": "obsidian://open?vault=main&file=present%20continuous%20tense",
     "present simple": "obsidian://open?vault=main&file=present%20indefinite%20form%20of%20the%20verb",
@@ -24,19 +15,163 @@ obsidian_links = {
     "future perfect continuous": "obsidian://open?vault=main&file=future%20perfect%20continuous%20tense",
 }
 
-tenses = {
-    "present continuous": 1,
-    "present simple": 1,
-    "present perfect": 1,
-    "present perfect continuous": 2,
-    "past simple": 3,
-    "past continuous": 4,
-    "past perfect": 3,
-    "past perfect continuous": 0,
-    "future simple": 0,
-    "future continuous": 0,
-    "future perfect": 0,
-    "future perfect continuous": 0,
+weights = {
+    "present continuous": {
+        "chance": 1,
+        "usage": 1,
+        "type": 1,
+        "sentence_types": {
+            "affirmative sentences": 1,
+            "negative sentences": 1,
+            "interrogative sentences": 1,
+            "interrogative-negative sentences in a formal style": 1,
+            "interrogative-negative sentences in an informal style": 1,
+            "interrogative sentences with a question word": 1,
+        },
+    },
+    "present simple": {
+        "chance": 2,
+        "usage": 1,
+        "type": 1,
+        "sentence_types": {
+            "affirmative sentences": 1,
+            "negative sentences": 1,
+            "interrogative sentences": 1,
+            "interrogative-negative sentences in a formal style": 1,
+            "interrogative-negative sentences in an informal style": 1,
+            "interrogative sentences with a question word": 1,
+        },
+    },
+    "present perfect": {
+        "chance": 3,
+        "usage": 1,
+        "type": 1,
+        "sentence_types": {
+            "affirmative sentences": 1,
+            "negative sentences": 1,
+            "interrogative sentences": 1,
+            "interrogative-negative sentences in a formal style": 1,
+            "interrogative-negative sentences in an informal style": 1,
+            "interrogative sentences with a question word": 1,
+        },
+    },
+    "present perfect continuous": {
+        "chance": 1,
+        "usage": 1,
+        "type": 1,
+        "sentence_types": {
+            "affirmative sentences": 1,
+            "negative sentences": 1,
+            "interrogative sentences": 1,
+            "interrogative-negative sentences in a formal style": 1,
+            "interrogative-negative sentences in an informal style": 1,
+            "interrogative sentences with a question word": 1,
+        },
+    },
+    "past simple": {
+        "chance": 1,
+        "usage": 1,
+        "type": 1,
+        "sentence_types": {
+            "affirmative sentences": 1,
+            "negative sentences": 1,
+            "interrogative sentences": 1,
+            "interrogative-negative sentences in a formal style": 1,
+            "interrogative-negative sentences in an informal style": 1,
+            "interrogative sentences with a question word": 1,
+        },
+    },
+    "past continuous": {
+        "chance": 1,
+        "usage": 1,
+        "type": 1,
+        "sentence_types": {
+            "affirmative sentences": 1,
+            "negative sentences": 1,
+            "interrogative sentences": 1,
+            "interrogative-negative sentences in a formal style": 1,
+            "interrogative-negative sentences in an informal style": 1,
+            "interrogative sentences with a question word": 1,
+        },
+    },
+    "past perfect": {
+        "chance": 1,
+        "usage": 1,
+        "type": 1,
+        "sentence_types": {
+            "affirmative sentences": 1,
+            "negative sentences": 1,
+            "interrogative sentences": 1,
+            "interrogative-negative sentences in a formal style": 1,
+            "interrogative-negative sentences in an informal style": 1,
+            "interrogative sentences with a question word": 1,
+        },
+    },
+    "past perfect continuous": {
+        "chance": 1,
+        "usage": 1,
+        "type": 1,
+        "sentence_types": {
+            "affirmative sentences": 1,
+            "negative sentences": 1,
+            "interrogative sentences": 1,
+            "interrogative-negative sentences in a formal style": 1,
+            "interrogative-negative sentences in an informal style": 1,
+            "interrogative sentences with a question word": 1,
+        },
+    },
+    "future simple": {
+        "chance": 1,
+        "usage": 1,
+        "type": 1,
+        "sentence_types": {
+            "affirmative sentences": 1,
+            "negative sentences": 1,
+            "interrogative sentences": 1,
+            "interrogative-negative sentences in a formal style": 1,
+            "interrogative-negative sentences in an informal style": 1,
+            "interrogative sentences with a question word": 1,
+        },
+    },
+    "future continuous": {
+        "chance": 1,
+        "usage": 1,
+        "type": 1,
+        "sentence_types": {
+            "affirmative sentences": 1,
+            "negative sentences": 1,
+            "interrogative sentences": 1,
+            "interrogative-negative sentences in a formal style": 1,
+            "interrogative-negative sentences in an informal style": 1,
+            "interrogative sentences with a question word": 1,
+        },
+    },
+    "future perfect": {
+        "chance": 1,
+        "usage": 1,
+        "type": 1,
+        "sentence_types": {
+            "affirmative sentences": 1,
+            "negative sentences": 1,
+            "interrogative sentences": 1,
+            "interrogative-negative sentences in a formal style": 1,
+            "interrogative-negative sentences in an informal style": 1,
+            "interrogative sentences with a question word": 1,
+        },
+    },
+    "future perfect continuous": {
+        "chance": 1,
+        "usage": 1,
+        "type": 1,
+        "sentence_types": {
+            "affirmative sentences": 1,
+            "negative sentences": 1,
+            "interrogative sentences": 1,
+            "interrogative-negative sentences in a formal style": 1,
+            "interrogative-negative sentences in an informal style": 1,
+            "interrogative sentences with a question word": 1,
+        },
+    },
 }
 
 usages = {
@@ -81,7 +216,7 @@ usages = {
         "to refer to things we intend to do in the future but which are not done": 2,
         "to emphasise that something is done or achieved, often before the expected time": 2,
         "to emphasise that something we expected to happen continues not to happen": 2,
-        "instead of present perfect continuous with stative verbs": 1,
+        "instead of present perfect continuous with stative verbs": 2,
     },
     "present perfect continuous": {
         "to talk about a recently finished activity that was ongoing up to now and that has a connection with the present (result)": 1,
@@ -122,14 +257,96 @@ usages = {
         "some special patterns: `I hadn't + V3… , when`:": 1,
         "instead of past perfect continuous with stative verbs": 1,
     },
+    "past perfect continuous": {
+        "to talk about actions or events which started before a specific point or action in the past and were still in progress up to that time in the past": 1,
+        "to talk about action that began before and continued up to another past action but was not happening during it": 1,
+        "to talk about events which started before a time in the past and which finished, but where the effects or results were still important at a point in the past": 1,
+        "to explain the cause of a past event/state": 1,
+        "to focus on the ongoing nature of an activity leading up to a moment in the past (even if not still in progress)": 1,
+        "to express irritation or complaint about a repeated past action that was happening before a certain time": 1,
+        "to talk about unnatural, unusual action or state that was temporary": 1,
+        "In narrative to provide background and set the scene before a main event": 1,
+    },
+    "future simple": {
+        "single action in the future": 1,
+        "to express a sequence of actions in the future": 1,
+        "to indicate a permanent feature (state) of the object": 1,
+        "to talk about habit or events that happen often": 1,
+        "to talk about repeated behaviour which the speaker does not like or approve of | (disapproval)": 1,
+        "to express determination, volition, willingness to do something, want, intention": 1,
+        "to make offers or willingness to help": 1,
+        "use for immediate or spontaneous intentions, decisions, plans": 1,
+        "to make requests or invitations": 1,
+        "to describe something the speaker thinks is generally true": 1,
+        "to refer to a confidently assumed situation (confidence) (about the present)": 1,
+        "to refer to things in the future that we think are certain": 1,
+        "to make predictions about the future": 1,
+        "to make predictions about facts (sometimes about things that we know always happen)": 1,
+        "some predictions about the present | conclusion | deduction | умозаключение:": 1,
+        "to make promises": 1,
+        "to insist that someone does something (insistence)": 1,
+        "to give command, order, requirement, demand": 1,
+        "negative insistence, refusal": 1,
+        "to refer to inanimate objects and how they respond to humans": 1,
+        "in the main clause of a conditional sentence when we talk about possible situations in the future": 1,
+        "instead of future continuous with stative verbs": 1,
+    },
+    "future continuous": {
+        "an action or state that is expected to last for a certain period of time": 1,
+        "simultaneous/parallel actions that are expected to occur over a certain period of time": 1,
+        "a longer action that will be in progress when another action occurs (interruption)": 1,
+        "actions that will occur regularly or repeatedly in a specific period of time in the future": 1,
+        "to emphasize that the action or state will continue for a period of time (it could be small period)": 1,
+        "used to add emotional coloring to continuously repeated (events/states)": 1,
+        "used to add emotional coloring to constant, repeated, unplanned or undesired (events/states)": 1,
+        "unnatural, unusual action or state that will be temporary": 1,
+        "to ask politely about someone’s plans or availability, or about scheduled arrangements": 1,
+        "to create a background or atmosphere when telling a story - (artistic)": 1,
+        "to refer to a confidently assumed situation (confidence)": 1,
+        "determination, volition, willingness to do something, want, intention": 1,
+        "immediate or spontaneous intentions, decisions, plans": 1,
+        "to describe something the speaker thinks is generally true": 1,
+        "to refer to things in the future that we think are certain": 1,
+        "to make predictions about the future": 1,
+        "to make predictions about facts – things that we know always happen": 1,
+        "to make promises": 1,
+        "to insist that someone does something (insistence)": 1,
+    },
+    "future perfect": {
+        "to describe actions that will be completed by a certain time in the future (determination, volition, willingness to do something, want, intention)": 1,
+        "to describe actions that will be completed by a certain time in the future (immediate or spontaneous intentions, decisions, plans)": 1,
+        "to describe actions that will be completed by a certain time in the future (to describe something the speaker thinks is generally true)": 1,
+        "to describe actions that will be completed by a certain time in the future (to refer to things in the future that we think are certain)": 1,
+        "to describe actions that will be completed by a certain time in the future (to make predictions about the future)": 1,
+        "to describe actions that will be completed by a certain time in the future (to make predictions about facts – things that we know always happen)": 1,
+        "to describe actions that will be completed by a certain time in the future (to make promises)": 1,
+        "to refer to a confidently assumed present or past situation (rather than a future situation)": 1,
+        "to insist that someone does something | to give command, order, requirement, demand": 1,
+        "instead of future perfect continuous with stative verbs": 1,
+    },
+    "future perfect continuous": {
+        "used to express an action that is expected to be happening up to a certain point in time or event in the future (determination, volition, willingness to do something, want, intention)": 1,
+        "used to express an action that is expected to be happening up to a certain point in time or event in the future (immediate or spontaneous intentions, decisions, plans)": 1,
+        "used to express an action that is expected to be happening up to a certain point in time or event in the future (to describe something the speaker thinks is generally true)": 1,
+        "used to express an action that is expected to be happening up to a certain point in time or event in the future (to refer to things in the future that we think are certain)": 1,
+        "used to express an action that is expected to be happening up to a certain point in time or event in the future (to make predictions about the future)": 1,
+        "used to express an action that is expected to be happening up to a certain point in time or event in the future (to make predictions about facts – things that we know always happen)": 1,
+        "used to express an action that is expected to be happening up to a certain point in time or event in the future (to make promises)": 1,
+        "to explain the reason for something in the future": 1,
+        "to express a confident assumption about the present": 1,
+    },
 }
 
 
 if __name__ == "__main__":
-    tenses_sum = sum(filter(lambda x: x > 0, tenses.values()))
+    chances_of_tenses = [i["chance"] for i in weights.values()]
+    tenses_sum = sum(filter(lambda x: x > 0, chances_of_tenses))
 
     for tense, usages_ in usages.items():
-        print(f"{tense}: {tenses[tense]}/{tenses_sum} = {round((tenses[tense] / tenses_sum) * 100, 2)}%")
+        print(
+            f"{tense}: {weights[tense]["chance"]}/{tenses_sum}"
+            f" = {round((weights[tense]["chance"] / tenses_sum) * 100, 2)}%"
+        )
 
         summ = sum(usages_.values())
         for key, value in usages_.items():

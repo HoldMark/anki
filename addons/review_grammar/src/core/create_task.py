@@ -2,7 +2,7 @@ import random
 from datetime import datetime
 
 from ..utils.logs.func import log
-from ..data.english_data import tenses, usages, pronouns, obsidian_links, sentence_types
+from ..data.english_data import usages, pronouns, obsidian_links, weights
 
 
 def string_to_number(s: str) -> int:
@@ -30,22 +30,28 @@ def create_task(data: dict) -> dict:
     seed = string_to_number(word) + string_to_number(definition) + day + month
     random.seed(seed)
 
-    # tenses
-    key_tenses = list(tenses.keys())
-    value_tenses = list(tenses.values())
-    res_tense = random.choices(key_tenses, weights=value_tenses, k=1)[0]
-    res_obsidian_link = obsidian_links[res_tense]
+    # tense
+    tenses = weights.keys()
+    chances_of_tenses = [i["chance"] for i in weights.values()]
+    chosen_tense = random.choices(tenses, weights=chances_of_tenses, k=1)[0]
+    res_obsidian_link = obsidian_links[chosen_tense]
+
+    # type_or_usage
+    chances_of_type_or_usage = [
+        weights[chosen_tense]["usage"],
+        weights[chosen_tense]["type"]
+    ]
+    type_or_usage = random.choices(["usage", "type"], weights=chances_of_type_or_usage, k=1)[0]
 
     # sentence types & usages
-    type_or_usage = random.choice([True, False])
-    if type_or_usage:
-        stk = list(sentence_types.keys())
-        stv = list(sentence_types.values())
+    if type_or_usage == "type":
+        stk = list(chosen_tense["sentence_types"].keys())
+        stv = list(chosen_tense["sentence_types"].values())
         res_sentence_type = random.choices(stk, weights=stv, k=1)[0]
         res_usage = None
     else:
-        ku = list(usages[res_tense].keys())
-        vu = list(usages[res_tense].values())
+        ku = list(usages[chosen_tense].keys())
+        vu = list(usages[chosen_tense].values())
         res_usage = random.choices(ku, weights=vu, k=1)[0]
         res_sentence_type = None
 
@@ -58,7 +64,7 @@ def create_task(data: dict) -> dict:
         "pronoun": res_pronoun,
         "sentence_type": res_sentence_type,
         "usage": res_usage,
-        "tense": res_tense,
+        "tense": chosen_tense,
         "obsidian_link": res_obsidian_link,
     }
 
