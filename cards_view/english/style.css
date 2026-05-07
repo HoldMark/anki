@@ -87,6 +87,8 @@ a {
 	margin-left: 5px;
 }
 
+/* HINTS IN HEADERS START */
+
 .definition-front-content .pos-span {
 	margin-right: 10px;
 }
@@ -103,6 +105,12 @@ a {
     margin-right: 10px;
 }
 
+.hide-hints-span{
+    color: #0000;
+    background: #ccc;
+}
+
+/* HINTS IN HEADERS END */
 
 /* HEADERS END */
 
