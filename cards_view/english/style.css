@@ -87,6 +87,23 @@ a {
 	margin-left: 5px;
 }
 
+.definition-front-content .pos-span {
+	margin-right: 10px;
+}
+
+.definition-back-content .pos-span {
+	margin-right: 10px;
+}
+
+.typing-front-content .pos-span {
+    margin-right: 10px;
+}
+
+.typing-back-content .trans-span {
+    margin-right: 10px;
+}
+
+
 /* HEADERS END */
 
 /* MORE INFO START */
