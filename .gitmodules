@@ -1,12 +1,16 @@
 [submodule "addons/error_cooldown"]
 	path = addons/error_cooldown
 	url = https://github.com/HoldMark/error-cooldown-anki.git
+	branch = master
 [submodule "pdf2text"]
 	path = pdf2text
 	url = https://github.com/HoldMark/pdf2text.git
+	branch = master
 [submodule "addons/grammar_drill"]
 	path = addons/grammar_drill
 	url = https://github.com/HoldMark/grammar-drill-anki.git
+	branch = master
 [submodule "lexicon-scraper"]
 	path = lexicon-scraper
 	url = https://github.com/HoldMark/lexicon-scraper.git
+	branch = master
