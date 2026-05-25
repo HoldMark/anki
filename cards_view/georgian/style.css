@@ -180,55 +180,6 @@ a {
 
 /*---- IMAGE BLOCK END ----*/
 
-/*---- SENTENCE TYPING CARD START ----*/
-
-.input-block {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* расстояние между input и иконкой */
-}
-
-.copy-icon {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.input-inner-block {
-	width: 100%;
-}
-
-.condition-block .condition {
-	width: 100%;
-	display: inline-block;
-	margin-bottom: 5px;
-	font-size: 18px;
-}
-.condition-block .condition-name {
-	font-size: 18px;
-	color: #737373;
-}
-
-.review {
-	width: 100%;
-	display: inline-block;
-	margin-bottom: 5px;
-	font-size: 18px;
-}
-
-.review-name {
-	color: #737373;
-}
-.review-result-block, review-text-block, .style-suggestions, .grammar-errors, .explanation-of-text, .sent-text, .correct-version {
-	display: none;
-}
-.style-suggestions ul, .grammar-errors ul {
-	margin: 8px 0;
-}
-
-/*---- SENTENCE TYPING CARD END ----*/
-
 /*OTHER START*/
 
 .hr-after-button-block {
@@ -239,7 +190,7 @@ a {
 	color: #00529B;
 }
 
-.word-span {
+.word-span, .trans-span {
 	color: #00529B;
 	font-size: 30px;
 }
