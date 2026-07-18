@@ -12,6 +12,6 @@ lint: linter formater
 commit:
 	pre-commit run --all-files
 
-preview:
+preview:  # to correctly stop it: Ctrl+C (not command + C)
 	@echo "Open http://localhost:8000/preview/preview.html"
 	python3 -m http.server 8000 --directory cards_view
