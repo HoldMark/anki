@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Anki card preview</title>
+<link rel="stylesheet" href="preview.css">
+</head>
+<body>
+
+<div class="toolbar">
+	<div class="toolbar-group">
+		<label for="cardType">Card type</label>
+		<select id="cardType"></select>
+	</div>
+
+	<div class="toolbar-group toolbar-side">
+		<button type="button" id="sideFront" class="side-btn active" data-side="front">Front</button>
+		<button type="button" id="sideBack" class="side-btn" data-side="back">Back</button>
+	</div>
+
+	<div class="toolbar-note">
+		Must be served over <code>http://</code> (see <code>make preview</code>) — opening this file directly (<code>file://</code>) will fail to load templates.
+	</div>
+</div>
+
+<div id="status" class="status"></div>
+
+<div class="layout">
+	<div class="fields-panel">
+		<h2>Fields</h2>
+		<form id="fieldsForm"></form>
+	</div>
+
+	<div class="preview-panel">
+		<iframe id="cardFrame" title="Card preview"></iframe>
+	</div>
+</div>
+
+<script src="preview.js"></script>
+</body>
+</html>
