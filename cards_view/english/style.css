@@ -115,25 +115,6 @@ a {
 
 /* HEADERS END */
 
-/* DEFINITION CEFR START */
-
-.definition-text-block.has-cefr {
-	display: flex;
-	gap: 12px;
-}
-
-.cefr-span {
-	color: #ccc;
-	flex-shrink: 0;
-}
-
-.definition-text-block.has-cefr .cefr-span {
-	border-left: 1px solid #ccc;
-	padding-left: 8px;
-}
-
-/* DEFINITION CEFR END */
-
 /* MORE INFO START */
 
 .word-info-block {
