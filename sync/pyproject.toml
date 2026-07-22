@@ -1,0 +1,45 @@
+[project]
+name = "sync"
+description = "Anki <-> Cambridge Dictionary sync tool: mirrors Anki notes into SQLite, proposes candidate links to Cambridge reference data, and enriches whitelisted Anki fields"
+requires-python = ">=3.13"
+
+[tool.logging.default]
+format = "# {levelname:<8} | {asctime}.{msecs:03.0f} | {name:<15} | {lineno:^4} | {message}"
+datefmt = "%d.%m.%Y %H:%M:%S"
+style = "{"
+stream = 1
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+output-format = "concise"
+
+exclude = [
+    ".git",
+    "__pycache__",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    "venv",
+    "sandbox",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle (ошибки стиля)
+    "W",    # pycodestyle (предупреждения стиля)
+    "F",    # pyflakes (неиспользуемый импорт, переменные и т.д.)
+    "I",    # isort (импорты)
+    "B",    # flake8-bugbear
+    "UP",   # pyupgrade (современный синтаксис)
+    "N",    # pep8-naming (соглашения по именованию)
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+length-sort = true
+known-first-party = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
