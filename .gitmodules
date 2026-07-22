@@ -17,3 +17,7 @@
 [submodule "addons/question_forge"]
 	path = addons/question_forge
 	url = https://github.com/HoldMark/question-forge-anki.git
+[submodule "addons/anki_connect"]
+	path = addons/anki_connect
+	url = https://github.com/HoldMark/anki_connect.git
+	branch = master
