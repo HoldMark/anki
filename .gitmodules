@@ -25,3 +25,7 @@
 	path = mcp
 	url = https://github.com/HoldMark/anki_mcp.git
 	branch = master
+[submodule "sync"]
+	path = sync
+	url = https://github.com/HoldMark/anki_sync.git
+	branch = master
