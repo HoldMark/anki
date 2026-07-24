@@ -1,5 +1,6 @@
 <script src="sentence-examples.js"></script>
 <script src="hints.js"></script>
+<script src="word-tree.js"></script>
 
 <div class="typing-back-content">
 
@@ -62,5 +63,27 @@
 
 		</div> <!--.basic-block-inner-wrapper-->
 	</div> <!--.basic-block .basic-block-definition-->
+
+	<div class="basic-block basic-block-word-tree" data-trans="{{trans}}">
+		<div class="basic-block-inner-wrapper">
+
+			<div class="header-word-tree">
+				<span class="word-tree-title">Other meanings</span>
+			</div> <!--.header-word-tree-->
+
+			<div class="word-tree-collapsible">
+
+				<div class="body-word-tree"></div> <!--.body-word-tree-->
+
+				<div class="word-tree-more-block">
+					<a href="https://dictionary.cambridge.org/dictionary/english/{{word}}" class="word-tree-more-link">see more...</a>
+				</div> <!--.word-tree-more-block-->
+
+			</div> <!--.word-tree-collapsible-->
+
+			<span class="word-tree-data">{{word_tree}}</span>
+
+		</div> <!--.basic-block-inner-wrapper-->
+	</div> <!--.basic-block .basic-block-word-tree-->
 
 </div> <!--.typing-back-content-->

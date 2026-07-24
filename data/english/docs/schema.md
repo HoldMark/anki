@@ -14,8 +14,8 @@ anki/data/english/sync.sqlite
 ```
 
 Git-ignored in both `sync` and `lexicon-scraper` (and at the `anki/` superproject level) — never
-committed. Backups taken before risky schema changes live alongside it as
-`sync.sqlite.bak-<timestamp>[-<label>]`.
+committed. Backups taken before risky schema changes live in `backups/` next to it, as
+`backups/sync.sqlite.bak-<timestamp>[-<label>]`.
 
 Both projects resolve the path via a `DB_PATH` env var (`.env`, loadable per-project), defaulting to
 this file resolved relative to each project's own root:

@@ -7,6 +7,7 @@ TABLE OF CONTENTS:
 - MORE INFO
 - BUTTONS
 - IMAGE BLOCK
+- WORD TREE BLOCK
 - SENTENCE TYPING CARD
 - OTHER
 
@@ -205,6 +206,103 @@ a {
 }
 
 /*---- IMAGE BLOCK END ----*/
+
+/*---- WORD TREE BLOCK START ----*/
+
+.basic-block-word-tree {
+    margin-top: 22px;
+}
+
+.basic-block-word-tree .basic-block-inner-wrapper {
+    padding-top: 15px;
+}
+
+.basic-block-word-tree.word-tree-collapsed .basic-block-inner-wrapper {
+    padding-bottom: 5px;
+}
+
+.header-word-tree {
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.word-tree-title {
+    font-size: 14px;
+    color: #737373;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.word-tree-title::after {
+    content: "▾";
+    display: inline-block;
+    margin-left: 6px;
+    transition: transform 0.2s;
+}
+
+.word-tree-collapsed .word-tree-title::after {
+    transform: rotate(-90deg);
+}
+
+.word-tree-collapsed .word-tree-collapsible {
+    display: none;
+}
+
+.word-tree-pos-block {
+    margin-bottom: 20px;
+}
+
+.word-tree-pos-block:last-child {
+    margin-bottom: 0;
+}
+
+.word-tree-pos-header {
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+
+.word-tree-pos-header .pos-span {
+    font-weight: bold;
+}
+
+.word-tree-sense-block {
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+.word-tree-sense-block:last-child {
+    margin-bottom: 0;
+}
+
+.word-tree-sense-block + .word-tree-sense-block {
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.word-tree-sense-header {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.word-tree-definitions-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.word-tree-data {
+    display: none;
+}
+
+.word-tree-more-block {
+    margin-top: 20px;
+}
+
+.word-tree-more-link {
+    color: #00529B;
+    font-size: 14px;
+}
+
+/*---- WORD TREE BLOCK END ----*/
 
 /*---- SENTENCE TYPING CARD START ----*/
 
