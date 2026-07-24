@@ -6,7 +6,10 @@
       "Bash(source venv/bin/activate)",
       "Bash(python -c \":*)",
       "Bash(pip install:*)",
-      "Bash(git submodule *)"
+      "Bash(git submodule *)",
+      "mcp__anki-mcp__anki_search_decks",
+      "mcp__anki-mcp__anki_get_notes",
+      "mcp__anki-mcp__anki_get_notes_fields"
     ]
   }
 }

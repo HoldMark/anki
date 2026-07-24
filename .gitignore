@@ -378,6 +378,7 @@ Temporary Items
 ### Own Exceptions ###
 
 *.sqlite
+*.sqlite.bak-*
 *.xlsx
 /logs
 /sandbox
