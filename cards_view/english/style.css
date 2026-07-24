@@ -249,6 +249,14 @@ a {
     display: none;
 }
 
+.word-tree-error .header-word-tree {
+    cursor: default;
+}
+
+.word-tree-error .word-tree-title {
+    color: #c0392b;
+}
+
 .word-tree-pos-block {
     margin-bottom: 20px;
 }

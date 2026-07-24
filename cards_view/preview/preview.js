@@ -11,6 +11,51 @@
 //   are injected at runtime by the review_grammar addon and don't exist as
 //   static files here — they are skipped with a console warning.
 
+// Sample word_tree JSON for the english "Other meanings" block (word-tree.js) —
+// that file only ever runs against real note data, so this is the one place a
+// tree exists purely to make the block's layout visible without Anki. Stored
+// as a JS object and JSON.stringify'd into the word_tree field below; kept in
+// sync with the shape sync/src/sync/word_tree.py writes into real notes
+// (word -> parts_of_speech -> senses -> definitions).
+const WORD_TREE_SAMPLE = {
+	word: "run",
+	parts_of_speech: [
+		{
+			part_of_speech: "verb",
+			trans: "/rʌn/",
+			trans_type: "(uk)",
+			senses: [
+				{
+					sense: "MOVE",
+					definitions: [
+						"to move fast using your legs",
+						"to go regularly to a place by a particular means of transport",
+					],
+				},
+				{
+					sense: "OPERATE",
+					definitions: ["to control or manage something, or to make it work"],
+				},
+			],
+		},
+		{
+			part_of_speech: "noun",
+			trans: "/rʌn/",
+			trans_type: "(uk)",
+			senses: [
+				{
+					sense: "ACT OF RUNNING",
+					definitions: ["a period of running, or a distance covered by running"],
+				},
+				{
+					sense: "",
+					definitions: ["an enclosed area where chickens or other animals can move around freely"],
+				},
+			],
+		},
+	],
+};
+
 // Canonical field set/order shared by every vocab card type (word, trans,
 // trans_type, part_of_speech, sense, definition, example_1..7, audio, video,
 // hints), plus `picture` appended at the end (used by word/definition image
@@ -35,6 +80,7 @@ function vocabFields(overrides = {}) {
 		video: "",
 		hints: "irreg;",
 		picture: "[picture placeholder]",
+		word_tree: JSON.stringify(WORD_TREE_SAMPLE, null, 2),
 		...overrides,
 	};
 }
