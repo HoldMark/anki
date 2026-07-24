@@ -12,7 +12,7 @@
 //   static files here — they are skipped with a console warning.
 
 // Canonical field set/order shared by every vocab card type (word, trans,
-// trans_type, part_of_speach, sense, definition, example_1..7, audio, video,
+// trans_type, part_of_speech, sense, definition, example_1..7, audio, video,
 // hints), plus `picture` appended at the end (used by word/definition image
 // blocks but not part of the order the user specified). Not every template
 // reads every one of these — unused fields just have no visible effect.
@@ -21,7 +21,7 @@ function vocabFields(overrides = {}) {
 		word: "run",
 		trans: "/rʌn/", // IPA transcription, not translation
 		trans_type: "(uk)", // accent variant: (uk) or (us)
-		part_of_speach: "verb",
+		part_of_speech: "verb",
 		sense: "run (verb)",
 		definition: "to move quickly on foot so that both feet leave the ground during each stride",
 		example_1: "She runs five miles every morning.",
