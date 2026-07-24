@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 {
+    // .word-tree-data holds the raw word_tree JSON (see SAMPLE_TREE below for its
+    // shape). .basic-block-word-tree is the whole "Other meanings" block, including
+    // its header/accordion. .body-word-tree is where the rendered pos/sense/
+    // definition markup gets appended.
     const dataNode = document.querySelector(".word-tree-data");
     const blockNode = document.querySelector(".basic-block-word-tree");
     const bodyNode = document.querySelector(".body-word-tree");
@@ -47,6 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (dataNode && blockNode && bodyNode) {
+        // JSON written to the note's word_tree field by anki_sync's word-tree
+        // command (see sync/src/sync/word_tree.py) — one entry per part of speech
+        // the word has, each with its own senses and, under each sense, the list
+        // of definitions.
         const raw = dataNode.textContent.trim();
 
         let tree = null;
@@ -58,28 +66,64 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
+        // Use the real tree when there is one; otherwise fall back to sample data
+        // (only actually hit in the Card Types editor preview, see comment above).
         let partsOfSpeech = (tree && tree.parts_of_speech) || [];
         if (partsOfSpeech.length === 0) {
             partsOfSpeech = SAMPLE_TREE.parts_of_speech;
         }
 
-        // Excludes the card's own entry from the tree, held in data-pos/data-sense/
-        // data-definition (layout of the main pos/sense/definition differs across
-        // card types, so it isn't read off the rendered DOM). A sense left with no
-        // definitions, or a part-of-speech left with no senses, is dropped too.
-        const currentPos = (blockNode.dataset.pos || "").trim();
-        const currentSense = (blockNode.dataset.sense || "").trim();
-        const currentDefinition = (blockNode.dataset.definition || "").trim();
+        // Total leaf definitions across the whole tree, counted before the
+        // current-entry exclusion below. word_tree is built from every note that
+        // shares this word, including the current one (see word_tree.py's
+        // build_word_trees) — so if the word only has one definition in total,
+        // that definition IS the current card's own, and there is nothing "other"
+        // left to show no matter how the exclusion below turns out. This is the
+        // primary guard for hiding the block on single-meaning words; it doesn't
+        // depend on the pos/sense/definition text matching exactly.
+        const totalDefinitions = partsOfSpeech.reduce((total, pos) => {
+            return total + (pos.senses || []).reduce((s, sense) => s + (sense.definitions || []).length, 0);
+        }, 0);
 
+        // Field text read off a data-* attribute can carry HTML tags Anki's rich-
+        // text editor wraps content in (e.g. a field edited as multiple lines
+        // often becomes "<div>...</div>"). Attribute values aren't HTML-parsed the
+        // way element content is, so those tags stay as literal characters instead
+        // of being stripped — "<div>a route that leads to a place</div>" instead of
+        // "a route that leads to a place". The word_tree JSON's own text doesn't
+        // have this problem (it went through dataNode.textContent above, which
+        // already discards any real tags), so without normalizing both sides the
+        // same way, an unwrapped field would never match its wrapped twin and the
+        // card's own entry would stay in the "other meanings" list. Routing the
+        // string through a scratch element's innerHTML/textContent strips tags and
+        // decodes entities the same way textContent did, and collapsing/trimming
+        // whitespace absorbs any formatting differences on top of that.
+        function normalizeFieldText(str) {
+            const scratch = document.createElement("div");
+            scratch.innerHTML = str || "";
+            return (scratch.textContent || "").replace(/\s+/g, " ").trim();
+        }
+
+        // Card's own part-of-speech/sense/definition, read off data attributes
+        // rather than the rendered DOM, since the layout of the main pos/sense/
+        // definition differs across card types (definition.html vs word.html etc).
+        const currentPos = normalizeFieldText(blockNode.dataset.pos);
+        const currentSense = normalizeFieldText(blockNode.dataset.sense);
+        const currentDefinition = normalizeFieldText(blockNode.dataset.definition);
+
+        // Drop the current card's own definition from its sense (matched by
+        // pos+sense+definition together, so an identical definition string under a
+        // different sense/pos is left alone), then drop any sense left with no
+        // definitions, and any part-of-speech left with no senses.
         partsOfSpeech = partsOfSpeech
             .map(pos => {
                 const senses = (pos.senses || [])
                     .map(sense => {
-                        const isCurrentSense = (pos.part_of_speech || "").trim() === currentPos
-                            && (sense.sense || "").trim() === currentSense;
+                        const isCurrentSense = normalizeFieldText(pos.part_of_speech) === currentPos
+                            && normalizeFieldText(sense.sense) === currentSense;
 
                         const definitions = (sense.definitions || []).filter(def => {
-                            return !(isCurrentSense && def.trim() === currentDefinition);
+                            return !(isCurrentSense && normalizeFieldText(def) === currentDefinition);
                         });
 
                         return { ...sense, definitions };
@@ -89,25 +133,32 @@ document.addEventListener("DOMContentLoaded", () => {
                 return { ...pos, senses };
             })
             .filter(pos => pos.senses.length > 0);
-        // if the word has only one meaning, it's the one just filtered out above,
-        // so nothing "other" is left to show and the block is dropped below
 
-        // Card's own part-of-speech first; everything else keeps whatever order
-        // build_word_trees produced it in (first-seen, not sorted) — stable sort.
+        // Card's own part-of-speech first (if it still has other senses/
+        // definitions left after the exclusion above); everything else keeps
+        // whatever order build_word_trees produced it in (first-seen, not sorted).
+        // Array.sort is stable in every engine Anki's Qt WebEngine runs on, so
+        // ties (score 0) preserve their relative order.
         partsOfSpeech.sort((a, b) => {
-            const aIsCurrent = (a.part_of_speech || "").trim() === currentPos;
-            const bIsCurrent = (b.part_of_speech || "").trim() === currentPos;
+            const aIsCurrent = normalizeFieldText(a.part_of_speech) === currentPos;
+            const bIsCurrent = normalizeFieldText(b.part_of_speech) === currentPos;
             return aIsCurrent === bIsCurrent ? 0 : aIsCurrent ? -1 : 1;
         });
 
-        if (partsOfSpeech.length === 0) {
+        // Nothing left to show as an "other meaning": either the word never had
+        // more than the one (current) definition to begin with (totalDefinitions,
+        // the robust check), or the exclusion above emptied the tree some other
+        // way. Either way, remove the whole block rather than leaving an empty
+        // "Other meanings" header.
+        if (totalDefinitions <= 1 || partsOfSpeech.length === 0) {
             blockNode.remove();
-            console.log("word-tree: no data, removed block");
+            console.log("word-tree: no other meanings, removed block");
         } else {
             // transcription is only shown per part-of-speech when it differs from
             // the card's own trans, held in data-trans (layout of the main trans
-            // differs across card types, so it isn't read off the rendered DOM)
-            const mainTrans = (blockNode.dataset.trans || "").trim();
+            // differs across card types, so it isn't read off the rendered DOM);
+            // normalized for the same reason currentPos/Sense/Definition are above
+            const mainTrans = normalizeFieldText(blockNode.dataset.trans);
 
             partsOfSpeech.forEach(pos => {
                 const posBlock = document.createElement("div");
@@ -121,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 posSpan.textContent = pos.part_of_speech || "";
                 posHeader.appendChild(posSpan);
 
-                if (pos.trans && pos.trans !== mainTrans) {
+                if (pos.trans && normalizeFieldText(pos.trans) !== mainTrans) {
                     const transSpan = document.createElement("span");
                     transSpan.className = "trans-span";
                     transSpan.textContent = pos.trans;
@@ -130,6 +181,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 posBlock.appendChild(posHeader);
 
+                // One block per sense, each with its own optional heading (senses
+                // with no name, e.g. SAMPLE_TREE's second "noun" sense, just show
+                // their definitions with no header) and a list of definitions.
                 (pos.senses || []).forEach(sense => {
                     const senseBlock = document.createElement("div");
                     senseBlock.className = "word-tree-sense-block";
