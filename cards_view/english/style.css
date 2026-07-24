@@ -215,6 +215,7 @@ a {
 
 .basic-block-word-tree .basic-block-inner-wrapper {
     padding-top: 15px;
+    padding-bottom: 20px;
 }
 
 .basic-block-word-tree.word-tree-collapsed .basic-block-inner-wrapper {
