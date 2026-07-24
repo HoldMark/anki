@@ -89,6 +89,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 return { ...pos, senses };
             })
             .filter(pos => pos.senses.length > 0);
+        // if the word has only one meaning, it's the one just filtered out above,
+        // so nothing "other" is left to show and the block is dropped below
+
+        // Card's own part-of-speech first; everything else keeps whatever order
+        // build_word_trees produced it in (first-seen, not sorted) — stable sort.
+        partsOfSpeech.sort((a, b) => {
+            const aIsCurrent = (a.part_of_speech || "").trim() === currentPos;
+            const bIsCurrent = (b.part_of_speech || "").trim() === currentPos;
+            return aIsCurrent === bIsCurrent ? 0 : aIsCurrent ? -1 : 1;
+        });
 
         if (partsOfSpeech.length === 0) {
             blockNode.remove();
