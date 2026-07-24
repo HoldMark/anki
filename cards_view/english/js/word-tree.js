@@ -63,6 +63,33 @@ document.addEventListener("DOMContentLoaded", () => {
             partsOfSpeech = SAMPLE_TREE.parts_of_speech;
         }
 
+        // Excludes the card's own entry from the tree, held in data-pos/data-sense/
+        // data-definition (layout of the main pos/sense/definition differs across
+        // card types, so it isn't read off the rendered DOM). A sense left with no
+        // definitions, or a part-of-speech left with no senses, is dropped too.
+        const currentPos = (blockNode.dataset.pos || "").trim();
+        const currentSense = (blockNode.dataset.sense || "").trim();
+        const currentDefinition = (blockNode.dataset.definition || "").trim();
+
+        partsOfSpeech = partsOfSpeech
+            .map(pos => {
+                const senses = (pos.senses || [])
+                    .map(sense => {
+                        const isCurrentSense = (pos.part_of_speech || "").trim() === currentPos
+                            && (sense.sense || "").trim() === currentSense;
+
+                        const definitions = (sense.definitions || []).filter(def => {
+                            return !(isCurrentSense && def.trim() === currentDefinition);
+                        });
+
+                        return { ...sense, definitions };
+                    })
+                    .filter(sense => sense.definitions.length > 0);
+
+                return { ...pos, senses };
+            })
+            .filter(pos => pos.senses.length > 0);
+
         if (partsOfSpeech.length === 0) {
             blockNode.remove();
             console.log("word-tree: no data, removed block");
