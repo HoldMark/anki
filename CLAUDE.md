@@ -35,3 +35,12 @@ Persistence: SQLite via a hand-rolled table layer in `src/db/`. Config via env v
 - `parse_words/` — BeautifulSoup scraper for Cambridge Dictionary, used to populate card content.
 - `cards_view/` — Jinja-style card templates for English and Georgian decks.
 - `sandbox/` — throwaway scripts, not part of any addon.
+
+## Commits across submodules
+
+This repo's `addons/*`, `pdf2text/`, `lexicon-scraper/`, `mcp/`, and `sync/` are git submodules,
+each with their own history. When a requested commit touches files inside one or more of these
+submodules: commit inside each affected submodule first, then commit the resulting submodule
+pointer bump(s) in this parent repo — all as part of the same request, without stopping to ask
+the user again before the parent-level commit. Only pause and ask first if a submodule's changes
+are ambiguous or unrelated to what was asked.
