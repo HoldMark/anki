@@ -382,5 +382,6 @@ Temporary Items
 *.xlsx
 /logs
 /sandbox
+/data/*/backups/
 
 ### Own Exceptions ###
