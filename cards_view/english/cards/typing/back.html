@@ -1,8 +1,9 @@
 <script src="sentence-examples.js"></script>
 <script src="hints.js"></script>
 <script src="word-tree.js"></script>
+<script src="typing-answer.js"></script>
 
-<div class="typing-back-content">
+<div class="typing-back-content" data-note-uuid="{{_system_note_uuid}}">
 
 	<div class="basic-block basic-block-typing">
 		<div class="basic-block-inner-wrapper">
@@ -12,6 +13,11 @@
 			</div>
 			<div class="body-typing">
 				{{type:word}}
+			</div>
+			<div class="typing-answer-check">
+				<div class="typing-diff-line typing-diff-typed"></div>
+				<div class="typing-diff-arrow">↓</div>
+				<div class="typing-diff-line typing-diff-correct"></div>
 			</div>
 
 		</div> <!--.basic-block-inner-wrapper-->

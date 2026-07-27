@@ -9,6 +9,7 @@ TABLE OF CONTENTS:
 - IMAGE BLOCK
 - WORD TREE BLOCK
 - SENTENCE TYPING CARD
+- TYPING CARD
 - OTHER
 
 */
@@ -361,6 +362,49 @@ a {
 }
 
 /*---- SENTENCE TYPING CARD END ----*/
+
+/*---- TYPING CARD START ----*/
+
+.typing-answer-input {
+	width: 100%;
+	font-size: 20px;
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+.typing-answer-check {
+	display: none;
+	margin-top: 15px;
+}
+
+.typing-diff-line {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+	font-size: 24px;
+	line-height: 1.4;
+}
+
+.typing-diff-arrow {
+	font-size: 18px;
+	line-height: 1.4;
+}
+
+.diff-char {
+	padding: 2px 1px;
+}
+
+.diff-match {
+	background-color: #b9f6b9;
+}
+
+.diff-wrong {
+	background-color: #ffb3b3;
+}
+
+.diff-missing {
+	background-color: #d3d3d3;
+}
+
+/*---- TYPING CARD END ----*/
 
 /*OTHER START*/
 
