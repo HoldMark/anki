@@ -380,6 +380,7 @@ Temporary Items
 *.sqlite
 *.sqlite.bak-*
 *.xlsx
+!data/english/MorphoLex-en.xlsx
 /logs
 /sandbox
 /data/*/backups/
