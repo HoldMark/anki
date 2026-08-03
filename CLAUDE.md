@@ -11,7 +11,7 @@ make formater   # ruff formatter only
 make commit     # run pre-commit hooks on all files
 ```
 
-Linter config: `pyproject.toml` — line length 120, Python 3.13, ruff rules E/W/F/I/B/UP/N. `cards_view/`, `parse_words/`, `data/` excluded from linting.
+Linter config: `pyproject.toml` — line length 120, Python 3.13, ruff rules E/W/F/I/B/UP/N. `cards_view/`, `lexicon-scraper/`, `data/` excluded from linting.
 
 ## Architecture
 
@@ -32,7 +32,7 @@ Persistence: SQLite via a hand-rolled table layer in `src/db/`. Config via env v
 
 ### Other directories
 
-- `parse_words/` — BeautifulSoup scraper for Cambridge Dictionary, used to populate card content.
+- `lexicon-scraper/` — BeautifulSoup scraper for Cambridge Dictionary, used to populate card content.
 - `cards_view/` — Jinja-style card templates for English and Georgian decks.
 - `sandbox/` — throwaway scripts, not part of any addon.
 

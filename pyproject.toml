@@ -45,6 +45,6 @@ length-sort = true
 [tool.ruff.lint.per-file-ignores]
 "cards_view" = ["ALL"]
 "data" = ["ALL"]
-"parse_words" = ["ALL"]
+"lexicon-scraper" = ["ALL"]
 "addons/review_grammar/src/data/english_data.py" = ["E501"]
 "addons/review_grammar/src/data/prompts.py" = ["E501"]
