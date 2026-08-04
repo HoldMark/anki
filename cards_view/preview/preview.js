@@ -180,6 +180,54 @@ const CARD_TYPES = [
 			answer: "Answer text goes here.",
 		},
 	},
+	{
+		id: "common-verses",
+		label: "common / verses",
+		dir: "../common/verses/",
+		css: "../common/verses/style.css",
+		jsDir: "../common/verses/",
+		rawFields: ["answer"],
+		fields: {
+			theme: "poetry",
+			question: "Исповедь — Редьярд Киплинг",
+            answer:
+                "<p>Владей собой среди толпы смятенной,</p>\n" +
+                "<p>Тебя клянущей за смятенье всех, </p>\n" +
+                "<p>Верь сам в себя, наперекор вселенной, </p>\n" +
+                "<p>И маловерным отпусти их грех; </p>\n" +
+                "<p>Пусть час не пробил, жди, не уставая, </p>\n" +
+                "<p>Пусть лгут лжецы, не снисходи до них; </p>\n" +
+                "<p>Умей прощать и не кажись, прощая, </p>\n" +
+                "<p>Великодушней и мудрей других.</p>\n" +
+                "<br>\n" +
+                "<p>Умей мечтать, не став рабом мечтанья, </p>\n" +
+                "<p>И мыслить, мысли не обожествив; </p>\n" +
+                "<p>Равно встречай успех и поруганье, </p>\n" +
+                "<p>Не забывая, что их голос лжив; </p>\n" +
+                "<p>Останься тих, когда твое же слово </p>\n" +
+                "<p>Калечит плут, чтоб уловить глупцов, </p>\n" +
+                "<p>Когда вся жизнь разрушена, и снова </p>\n" +
+                "<p>Ты должен все воссоздавать с основ.</p>\n" +
+                "<br>\n" +
+                "<p>Умей поставить в радостной надежде </p>\n" +
+                "<p>На карту все, что накопил с трудом,</p>\n" +
+                "<p>Все проиграть и нищим стать, как прежде,</p>\n" +
+                "<p>И никогда не пожалеть о том. </p>\n" +
+                "<p>Умей принудить сердце, нервы, тело</p>\n" +
+                "<p>Тебе служить, когда в твоей груди </p>\n" +
+                "<p>Уже давно все пусто, все сгорело, </p>\n" +
+                "<p>И только воля говорит: «Иди»!</p>\n" +
+                "<br>\n" +
+                "<p>Останься прост, беседуя с царями,</p>\n" +
+                "<p>Будь честен, говоря с толпой; </p>\n" +
+                "<p>Будь прям и тверд с врагами и друзьями.</p>\n" +
+                "<p>Пусть все в свой час считаются с тобой; </p>\n" +
+                "<p>Наполни смыслом каждое мгновенье </p>\n" +
+                "<p>Часов и дней неуловимый бег- </p>\n" +
+                "<p>Тогда весь мир ты примешь во владенье, </p>\n" +
+                "<p>Тогда, мой сын, ты будешь человек.</p>\n",
+		},
+	},
 ];
 
 const state = {
@@ -254,14 +302,15 @@ async function fetchText(url) {
 	return response.text();
 }
 
-function substituteFields(html, values) {
+function substituteFields(html, values, rawFields = []) {
 	let result = html.replace(/\{\{type:([a-zA-Z0-9_]+)\}\}/g, (_, field) => {
 		const value = values[field] ?? "";
 		return `<span class="preview-typed-value">${escapeHtml(value)}</span>`;
 	});
 	result = result.replace(/\{\{([a-zA-Z0-9_]+)\}\}/g, (_, field) => {
 		const value = values[field];
-		return value === undefined ? "" : escapeHtml(value);
+		if (value === undefined) return "";
+		return rawFields.includes(field) ? value : escapeHtml(value);
 	});
 	return result;
 }
@@ -305,7 +354,7 @@ async function render() {
 		setStatus("");
 	}
 
-	const processedBody = substituteFields(bodyHtml, state.values);
+	const processedBody = substituteFields(bodyHtml, state.values, entry.rawFields ?? []);
 
 	const doc = `<!doctype html>
 <html>

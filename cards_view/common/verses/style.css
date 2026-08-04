@@ -1,0 +1,130 @@
+/*
+
+TABLE OF CONTENTS:
+
+- COMMON
+- HEADER
+- STANZA
+- LINES
+
+*/
+
+/* COMMON START */
+
+* {
+	box-sizing: border-box;
+}
+
+.card {
+	font-family: arial;
+	font-size: 20px;
+	color: black;
+	background-color: white;
+	margin: 100px auto;
+	width: 70%;
+}
+
+a {
+	color: #00529B;
+	text-decoration: underline;
+}
+
+.basic-block {
+	border: 1px solid #ccc;
+}
+
+.basic-block-inner-wrapper {
+	position: relative;
+	padding: 35px 20px 35px;
+}
+
+.basic-block-verse-text {
+	margin-top: 15px;
+}
+
+/* COMMON END */
+
+/* HEADER START */
+
+.theme-block {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	color: #ccc;
+	font-size: 15px;
+}
+
+/* HEADER END */
+
+/* STANZA START */
+
+.verse-stanza {
+	display: flex;
+	align-items: stretch;
+	gap: 20px;
+	padding: 20px 16px;
+	border-bottom: 1px solid #ccc;
+}
+
+.verse-stanza-last {
+	border-bottom: none;
+}
+
+/* Gutter as a real flex item (not absolutely positioned) so align-items:
+   stretch sizes it to match .stanza-lines' own height — i.e. the text —
+   instead of the stanza's full padded height. */
+.verse-stanza::before {
+	content: "";
+	width: 20px;
+	flex-shrink: 0;
+	background: #444242;
+}
+
+.verse-block-hidden .verse-stanza {
+	cursor: pointer;
+}
+
+.verse-block-hidden .verse-stanza:hover::before {
+	background: #676767;
+}
+
+.stanza-lines {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+/* STANZA END */
+
+/* LINES START */
+
+.verse-line {
+	margin: 0;
+	padding: 4px 8px;
+}
+
+.verse-block-hidden .verse-line.verse-line-hidden {
+	color: transparent;
+	background: #444242;
+	cursor: pointer;
+}
+
+.verse-block-hidden .verse-line.verse-line-hidden:hover {
+	background: #676767;
+}
+
+.verse-block-hidden .verse-line.verse-line-revealed {
+	color: inherit;
+	background: none;
+	cursor: pointer;
+}
+
+.verse-block-open .verse-line {
+	color: inherit;
+	background: none;
+	cursor: default;
+}
+
+/* LINES END */
