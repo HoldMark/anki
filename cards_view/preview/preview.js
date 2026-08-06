@@ -1,22 +1,7 @@
-// Assembles a cards_view template + its deck CSS + its JS files + sample field
-// data into one document and renders it inside an iframe via srcdoc, so
-// template/CSS/JS changes can be checked in a browser without opening Anki.
-//
-// Limitations (see plan / README note in preview.html):
-// - {{picture}} / {{audio}} stay as plain placeholder text — no wiring to a
-//   real collection.media folder.
-// - {{type:Field}} typing fields are rendered as static styled text, not
-//   Anki's live answer-input/grading box.
-// - sentence_typing's request-task-from-python.js / request-task-review-to-python.js
-//   are injected at runtime by the review_grammar addon and don't exist as
-//   static files here — they are skipped with a console warning.
+// Собирает шаблон + CSS + JS + тестовые поля в один документ, рендерит в
+// iframe через srcdoc. Ограничения — см. docs/notes.md.
 
-// Sample word_tree JSON for the english "Other meanings" block (word-tree.js) —
-// that file only ever runs against real note data, so this is the one place a
-// tree exists purely to make the block's layout visible without Anki. Stored
-// as a JS object and JSON.stringify'd into the word_tree field below; kept in
-// sync with the shape sync/src/sync/word_tree.py writes into real notes
-// (word -> parts_of_speech -> senses -> definitions).
+// Тестовые данные word_tree для word-tree.js. Формат — см. docs/notes.md.
 const WORD_TREE_SAMPLE = {
 	word: "run",
 	parts_of_speech: [
@@ -56,11 +41,7 @@ const WORD_TREE_SAMPLE = {
 	],
 };
 
-// Canonical field set/order shared by every vocab card type (word, trans,
-// trans_type, part_of_speech, sense, definition, example_1..7, audio, video,
-// hints), plus `picture` appended at the end (used by word/definition image
-// blocks but not part of the order the user specified). Not every template
-// reads every one of these — unused fields just have no visible effect.
+// Общий набор полей для всех словарных карточек.
 function vocabFields(overrides = {}) {
 	return {
 		word: "run",
@@ -186,11 +167,11 @@ const CARD_TYPES = [
 		dir: "../common/verses/",
 		css: "../common/verses/style.css",
 		jsDir: "../common/verses/",
-		rawFields: ["answer"],
+		rawFields: ["verse"],
 		fields: {
-			theme: "poetry",
-			question: "Исповедь — Редьярд Киплинг",
-            answer:
+			name: "Исповедь",
+			author: "Редьярд Киплинг",
+            verse:
                 "<p>Владей собой среди толпы смятенной,</p>\n" +
                 "<p>Тебя клянущей за смятенье всех, </p>\n" +
                 "<p>Верь сам в себя, наперекор вселенной, </p>\n" +

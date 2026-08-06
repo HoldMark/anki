@@ -2,9 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });  // для запуска кода после загрузки DOM
 
 {
-    // Разбивает содержимое блока стиха на четверостишия.
-    // Внутри поля {{answer}} каждая строка сохранена в <p>, а <br>
-    // отделяет одно четверостишие от другого.
+    // Группирует <p>-строки в четверостишия по разделителям <br>.
     function groupLinesByStanza(container) {
         const stanzas = [[]];
 
@@ -23,10 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // На лицевой стороне (interactive) каждая строка скрыта под спойлером
-    // (как .hide-hints-span) и открывается кликом по ней. Клик по строке
-    // останавливает всплытие (stopPropagation), поэтому клик по самой
-    // строке и клик по рамке/отступам четверостишия вокруг строк —
-    // два явно разных, не пересекающихся способа открыть текст.
+    // и открывается кликом по ней.
     function buildStanza(lines, interactive) {
         const stanza = document.createElement("div");
         stanza.className = "verse-stanza";
@@ -52,12 +47,19 @@ document.addEventListener("DOMContentLoaded", () => {
         stanza.appendChild(linesWrapper);
 
         if (interactive) {
-            // Клик в зазор между строками попадает на linesWrapper, а не на
-            // конкретную <p>, и без этого всплывал бы до stanza и открывал
-            // всё четверостишие. Гасим его здесь, чтобы «открыть всё»
-            // срабатывало только на рамке/отступах вокруг строк.
+            // Клик мимо узкой раскрытой строки: находим строку по Y-координате
+            // и переключаем её. Заодно гасит всплытие клика до stanza.
             linesWrapper.addEventListener("click", (event) => {
                 event.stopPropagation();
+                const y = event.clientY;
+                const target = lines.find((line) => {
+                    const rect = line.getBoundingClientRect();
+                    return y >= rect.top && y <= rect.bottom;
+                });
+                if (target) {
+                    target.classList.toggle("verse-line-hidden");
+                    target.classList.toggle("verse-line-revealed");
+                }
             });
 
             stanza.addEventListener("click", () => {
@@ -72,6 +74,27 @@ document.addEventListener("DOMContentLoaded", () => {
         return stanza;
     }
 
+    // Истинная ширина отрисованного текста строки (не зависит от ширины
+    // охватывающего блока, в отличие от scrollWidth).
+    function measureLineWidth(line) {
+        const range = document.createRange();
+        range.selectNodeContents(line);
+        return range.getBoundingClientRect().width;
+    }
+
+    // Максимальная ширина строки по всему стиху — записывается в
+    // --verse-max-line-width, см. style.css.
+    function syncMaxLineWidth(container) {
+        const lines = container.querySelectorAll(".verse-line");
+        let maxWidth = 0;
+        lines.forEach((line) => {
+            maxWidth = Math.max(maxWidth, measureLineWidth(line));
+        });
+        if (maxWidth > 0) {
+            container.style.setProperty("--verse-max-line-width", `${Math.ceil(maxWidth)}px`);
+        }
+    }
+
     function buildVerse(container) {
         const interactive = container.classList.contains("verse-block-hidden");
         const stanzasLines = groupLinesByStanza(container);
@@ -80,13 +103,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const stanzas = stanzasLines.map((lines) => buildStanza(lines, interactive));
         stanzas.forEach((stanza) => container.appendChild(stanza));
 
-        // Разделительная линия между четверостишиями задаётся через
-        // border-bottom у каждого .verse-stanza, а не :last-child в CSS —
-        // последнему четверостишию она не нужна, снимаем явно.
+        // Последнему четверостишию не нужен border-bottom-разделитель.
         const lastStanza = stanzas[stanzas.length - 1];
         if (lastStanza) {
             lastStanza.classList.add("verse-stanza-last");
         }
+
+        syncMaxLineWidth(container);
+
+        // Подстраховка: пересчёт после кадра отрисовки и на resize.
+        requestAnimationFrame(() => requestAnimationFrame(() => syncMaxLineWidth(container)));
+        window.addEventListener("resize", () => syncMaxLineWidth(container));
     }
 
     const verseBlock = document.querySelector(".verse-block");

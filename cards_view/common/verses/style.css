@@ -54,6 +54,10 @@ a {
 	font-size: 15px;
 }
 
+.verse-name{
+    color: #00529B;
+}
+
 /* HEADER END */
 
 /* STANZA START */
@@ -63,16 +67,14 @@ a {
 	align-items: stretch;
 	gap: 20px;
 	padding: 20px 16px;
-	border-bottom: 1px solid #ccc;
 }
 
 .verse-stanza-last {
 	border-bottom: none;
 }
 
-/* Gutter as a real flex item (not absolutely positioned) so align-items:
-   stretch sizes it to match .stanza-lines' own height — i.e. the text —
-   instead of the stanza's full padded height. */
+/* Гаттер — реальный flex-item, чтобы align-items: stretch тянул его по
+   высоте текста, а не по всей высоте паддингов stanza. */
 .verse-stanza::before {
 	content: "";
 	width: 20px;
@@ -100,9 +102,24 @@ a {
 
 /* LINES START */
 
+/* nowrap — на всех строках, включая скрытые: нужен и для отображения,
+   и для корректного измерения ширины в verses.js. */
 .verse-line {
 	margin: 0;
 	padding: 4px 8px;
+	max-width: 100%;
+	white-space: nowrap;
+	overflow-x: auto;
+}
+
+/* Видимый текст центрируется как блок общей ширины (не text-align),
+   поэтому строки разной длины делят один левый край. */
+.verse-block-open .verse-line,
+.verse-block-hidden .verse-line.verse-line-revealed {
+	/* content-box: --verse-max-line-width — ширина текста без паддингов. */
+	box-sizing: content-box;
+	width: var(--verse-max-line-width, max-content);
+	margin: 0 auto;
 }
 
 .verse-block-hidden .verse-line.verse-line-hidden {
