@@ -365,6 +365,20 @@ Icon[
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 
+*.db
+*.bat
+*.exp
+*.pdb
+*.dll
+*.a
+*.so
+*.db-shm
+*.db-wal
+*.sqlite
+bench/bench
+deno.lock
+bun.lockb
+
 # Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
