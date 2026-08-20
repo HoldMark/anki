@@ -390,4 +390,8 @@ Temporary Items
 cards_view/_docs/notes.md
 cards_view/preview/images/
 
+# Standalone side projects, not part of this repo
+/media_to_text/
+/puzzle_english/
+
 ### Own Exceptions ###
