@@ -6,6 +6,7 @@ TABLE OF CONTENTS:
 - HEADERS
 - MORE INFO
 - BUTTONS
+- COLLAPSIBLE BLOCK
 - IMAGE BLOCK
 - SENTENCE TYPING CARD
 - OTHER
@@ -109,6 +110,21 @@ a {
 
 /* MORE INFO END */
 
+/* TRANSCRIPTION HINT START */
+
+/* Transcription ({{trans}}) is masked by default so it doesn't spoil
+   pronunciation practice — click to reveal. Toggled by js/georgian-hints.js. */
+
+.trans-hint-span {
+    cursor: pointer;
+}
+
+.trans-hint-span:not(.trans-revealed) {
+    color: #0000;
+}
+
+/* TRANSCRIPTION HINT END */
+
 /* BUTTONS START */
 
 .button-block {
@@ -149,10 +165,53 @@ a {
 
 /* BUTTONS END */
 
+/*---- COLLAPSIBLE BLOCK START ----*/
+
+/* Shared by any .basic-block that can be collapsed (images, ...).
+   Toggled by js/collapsible-blocks.js, which adds/removes .collapsed on the .basic-block. */
+
+.collapsible-header {
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.collapsible-title {
+    font-size: 14px;
+    color: #737373;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.collapsible-title::after {
+    content: "▾";
+    display: inline-block;
+    margin-left: 6px;
+    transition: transform 0.2s;
+}
+
+.collapsed .collapsible-title::after {
+    transform: rotate(-90deg);
+}
+
+.collapsed .collapsible-body {
+    display: none;
+}
+
+/*---- COLLAPSIBLE BLOCK END ----*/
+
 /*---- IMAGE BLOCK START ----*/
 
 .basic-block-image {
     margin-top: 22px;
+}
+
+.basic-block-image .basic-block-inner-wrapper {
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+.basic-block-image.collapsed .basic-block-inner-wrapper {
+    padding-bottom: 5px;
 }
 
 .img-block {
@@ -165,6 +224,8 @@ a {
 }
 .img-block img {
 	width: 200px;
+	padding: 5px;
+	border: 1px solid #ccc;
 }
 
 .img-caption {

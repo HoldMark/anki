@@ -1,6 +1,8 @@
 <script src="sentence-examples.js"></script>
 <script src="remove-empty-image-block.js"></script>
 <script src="set-image-title.js"></script>
+<script src="georgian-hints.js"></script>
+<script src="georgian-collapsible-blocks.js"></script>
 
 <div class="definition-back-content">
 
@@ -35,7 +37,7 @@
 
 				<div class="word-block">
 					<a href="https://translate.google.com/?sl=ka&tl=en&text={{word}}&op=translate"><span class="word-span">{{word}}</span></a>
-					<span class="trans-span"> {{trans}}</span>
+					<span class="trans-hint-span trans-span"> {{trans}}</span>
 				</div>
 				<hr>
 				<div class="button-block">
@@ -72,10 +74,18 @@
 
 	<div class="basic-block basic-block-image">
 		<div class="basic-block-inner-wrapper">
-			<div class="img-block" data-word="{{word}}">
-				{{picture}}
-				<div class="img-caption"></div>
-			</div>
+
+			<div class="collapsible-header">
+				<span class="collapsible-title">Images</span>
+			</div> <!--.collapsible-header-->
+
+			<div class="collapsible-body">
+				<div class="img-block" data-word="{{word}}">
+					{{picture}}
+					<div class="img-caption"></div>
+				</div>
+			</div> <!--.collapsible-body-->
+
 		</div> <!--.basic-block-inner-wrapper-->
 	</div> <!--.basic-block .basic-block-image-->
 
