@@ -21,3 +21,6 @@
 	path = sync
 	url = https://github.com/HoldMark/anki_sync.git
 	branch = master
+[submodule "image_prep"]
+	path = image_prep
+	url = /Users/markprodius/projects/anki/image_prep
