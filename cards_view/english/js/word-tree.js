@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Corrupted field: show an error state instead of hiding the block or
             // showing unrelated data. No click handler attached, so it can't expand.
             blockNode.classList.add("word-tree-error");
-            const titleNode = blockNode.querySelector(".word-tree-title");
+            const titleNode = blockNode.querySelector(".collapsible-title");
             if (titleNode) {
                 titleNode.textContent = "JSON error";
             }
@@ -140,14 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 console.log("word-tree: rendered " + partsOfSpeech.length + " parts of speech");
-
-                // accordion: open by default, click the header to collapse/expand
-                const headerNode = document.querySelector(".header-word-tree");
-                if (headerNode) {
-                    headerNode.addEventListener("click", () => {
-                        blockNode.classList.toggle("word-tree-collapsed");
-                    });
-                }
             }
         }
     }

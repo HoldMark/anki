@@ -3,6 +3,7 @@
 <script src="set-image-title.js"></script>
 <script src="hints.js"></script>
 <script src="word-tree.js"></script>
+<script src="collapsible-blocks.js"></script>
 
 <div class="definition-back-content" data-note-uuid="{{_system_note_uuid}}">
 
@@ -80,21 +81,29 @@
 
 	<div class="basic-block basic-block-image">
 		<div class="basic-block-inner-wrapper">
-			<div class="img-block" data-word="{{word}}">
-				{{picture}}
-				<div class="img-caption"></div>
-			</div>
+
+			<div class="collapsible-header">
+				<span class="collapsible-title">Images</span>
+			</div> <!--.collapsible-header-->
+
+			<div class="collapsible-body">
+				<div class="img-block" data-word="{{word}}">
+					{{picture}}
+					<div class="img-caption"></div>
+				</div>
+			</div> <!--.collapsible-body-->
+
 		</div> <!--.basic-block-inner-wrapper-->
 	</div> <!--.basic-block .basic-block-image-->
 
 	<div class="basic-block basic-block-word-tree" data-trans="{{trans}}" data-pos="{{part_of_speech}}" data-sense="{{sense}}" data-definition="{{definition}}">
 		<div class="basic-block-inner-wrapper">
 
-			<div class="header-word-tree">
-				<span class="word-tree-title">Other meanings</span>
-			</div> <!--.header-word-tree-->
+			<div class="collapsible-header">
+				<span class="collapsible-title">Other meanings</span>
+			</div> <!--.collapsible-header-->
 
-			<div class="word-tree-collapsible">
+			<div class="collapsible-body">
 
 				<div class="body-word-tree"></div> <!--.body-word-tree-->
 
@@ -102,7 +111,7 @@
 					<a href="https://dictionary.cambridge.org/dictionary/english/{{word}}" class="word-tree-more-link">see more...</a>
 				</div> <!--.word-tree-more-block-->
 
-			</div> <!--.word-tree-collapsible-->
+			</div> <!--.collapsible-body-->
 
 			<span class="word-tree-data">{{word_tree}}</span>
 

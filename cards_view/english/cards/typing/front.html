@@ -1,5 +1,7 @@
 <script src="hints.js"></script>
 <script src="typing-answer.js"></script>
+<script src="remove-empty-image-block.js"></script>
+<script src="collapsible-blocks.js"></script>
 
 <div class="typing-front-content" data-note-uuid="{{_system_note_uuid}}">
 	<div class="basic-block basic-block-typing">
@@ -34,4 +36,20 @@
 
 		</div> <!--.basic-block-inner-wrapper-->
 	</div> <!--.basic-block .basic-block-definition-->
+
+	<div class="basic-block basic-block-image">
+		<div class="basic-block-inner-wrapper">
+
+			<div class="collapsible-header">
+				<span class="collapsible-title">Images</span>
+			</div> <!--.collapsible-header-->
+
+			<div class="collapsible-body">
+				<div class="img-block">
+					{{picture}}
+				</div>
+			</div> <!--.collapsible-body-->
+
+		</div> <!--.basic-block-inner-wrapper-->
+	</div> <!--.basic-block .basic-block-image-->
 </div>
