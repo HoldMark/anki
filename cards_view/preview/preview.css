@@ -46,6 +46,50 @@ select {
 	padding: 4px 6px;
 }
 
+.picture-dropdown {
+	position: relative;
+}
+
+.picture-dropdown-btn {
+	font-size: 14px;
+	padding: 4px 10px;
+	border: 1px solid #ccc;
+	background: #f0f0f0;
+	cursor: pointer;
+}
+
+.picture-dropdown-btn::after {
+	content: " \25BE";
+}
+
+.picture-dropdown-panel {
+	display: none;
+	position: absolute;
+	top: calc(100% + 4px);
+	left: 0;
+	flex-direction: column;
+	gap: 6px;
+	padding: 8px 10px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+	white-space: nowrap;
+	z-index: 10;
+}
+
+.picture-dropdown-panel.open {
+	display: flex;
+}
+
+.picture-dropdown-panel label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+	cursor: pointer;
+}
+
 .side-btn {
 	padding: 6px 14px;
 	border: 1px solid #ccc;

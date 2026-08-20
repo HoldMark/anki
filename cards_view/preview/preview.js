@@ -219,6 +219,12 @@ const state = {
 
 const $ = (id) => document.getElementById(id);
 
+// Anki fields hold HTML, so "picture" is always injected raw (never HTML-escaped),
+// regardless of a card type's rawFields list.
+const ALWAYS_RAW_FIELDS = ["picture"];
+const IMAGE_DIR = "images/";
+const IMAGE_EXTENSION_RE = /\.(jpe?g|png|gif|webp|svg)$/i;
+
 function escapeHtml(str) {
 	return str
 		.replace(/&/g, "&amp;")
@@ -284,6 +290,7 @@ async function fetchText(url) {
 }
 
 function substituteFields(html, values, rawFields = []) {
+	const raw = new Set([...ALWAYS_RAW_FIELDS, ...rawFields]);
 	let result = html.replace(/\{\{type:([a-zA-Z0-9_]+)\}\}/g, (_, field) => {
 		const value = values[field] ?? "";
 		return `<span class="preview-typed-value">${escapeHtml(value)}</span>`;
@@ -291,9 +298,61 @@ function substituteFields(html, values, rawFields = []) {
 	result = result.replace(/\{\{([a-zA-Z0-9_]+)\}\}/g, (_, field) => {
 		const value = values[field];
 		if (value === undefined) return "";
-		return rawFields.includes(field) ? value : escapeHtml(value);
+		return raw.has(field) ? value : escapeHtml(value);
 	});
 	return result;
+}
+
+async function loadPictureOptions() {
+	const container = $("pictureCheckboxes");
+	let listingHtml;
+	try {
+		listingHtml = await fetchText(IMAGE_DIR);
+	} catch (err) {
+		container.textContent = "(images/ not found)";
+		console.warn(`Preview: failed to list ${IMAGE_DIR} — ${err.message}`);
+		return;
+	}
+
+	const files = [...listingHtml.matchAll(/href="([^"]+)"/g)]
+		.map((m) => decodeURIComponent(m[1]))
+		.filter((href) => IMAGE_EXTENSION_RE.test(href));
+
+	container.innerHTML = "";
+	for (const file of files) {
+		const label = document.createElement("label");
+
+		const checkbox = document.createElement("input");
+		checkbox.type = "checkbox";
+		checkbox.checked = true;
+		checkbox.dataset.file = file;
+		checkbox.addEventListener("change", applyPictureSelection);
+
+		label.appendChild(checkbox);
+		label.appendChild(document.createTextNode(file));
+		container.appendChild(label);
+	}
+
+	applyPictureSelection();
+}
+
+function applyPictureSelection() {
+	const checkboxes = [...document.querySelectorAll("#pictureCheckboxes input")];
+	const checked = checkboxes.filter((cb) => cb.checked);
+	$("pictureDropdownBtn").textContent = checkboxes.length ? `Picture (${checked.length}/${checkboxes.length})` : "Picture";
+
+	if ("picture" in state.values) {
+		state.values.picture = checked
+			.map((cb) => `<img src="${IMAGE_DIR}${encodeURIComponent(cb.dataset.file)}" alt="${escapeHtml(cb.dataset.file)}">`)
+			.join("\n");
+		const textarea = $("field-picture");
+		if (textarea) textarea.value = state.values.picture;
+	}
+	render();
+}
+
+function togglePictureDropdown(force) {
+	$("pictureCheckboxes").classList.toggle("open", force);
 }
 
 async function render() {
@@ -366,7 +425,7 @@ function selectCardType(id) {
 	state.cardType = entry;
 	state.values = { ...entry.fields };
 	buildFieldsForm();
-	render();
+	applyPictureSelection();
 }
 
 function selectSide(side) {
@@ -379,7 +438,14 @@ function selectSide(side) {
 $("cardType").addEventListener("change", (e) => selectCardType(e.target.value));
 $("sideFront").addEventListener("click", () => selectSide("front"));
 $("sideBack").addEventListener("click", () => selectSide("back"));
+$("pictureDropdownBtn").addEventListener("click", (e) => {
+	e.stopPropagation();
+	togglePictureDropdown();
+});
+document.addEventListener("click", () => togglePictureDropdown(false));
+$("pictureCheckboxes").addEventListener("click", (e) => e.stopPropagation());
 
 populateCardTypeSelect();
 buildFieldsForm();
+loadPictureOptions();
 render();
