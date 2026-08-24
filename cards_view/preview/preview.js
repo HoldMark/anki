@@ -162,6 +162,23 @@ const CARD_TYPES = [
 		},
 	},
 	{
+		id: "common-lists",
+		label: "common / lists",
+		dir: "../common/lists/",
+		css: "../common/lists/style.css",
+		jsDir: "../common/lists/",
+		rawFields: ["question", "answer"],
+		fields: {
+			theme: "theme",
+			question: "When is <span><a href='#'>Present Simple</a></span> used?",
+			answer:
+				"<p>First item text goes here.</p>\n" +
+				"<p>Second item text goes here.</p>\n" +
+				"<p>Third item text goes here, a bit longer to see how wrapping looks.</p>\n" +
+				"<p>Fourth item.</p>\n",
+		},
+	},
+	{
 		id: "common-verses",
 		label: "common / verses",
 		dir: "../common/verses/",
