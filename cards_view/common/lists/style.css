@@ -65,7 +65,7 @@ a {
 	display: flex;
 	align-items: baseline;
 	gap: 10px;
-	padding: 6px 8px;
+	padding: 6px 8px 6px 0;
 }
 
 .list-item:not(:last-child) {
@@ -107,6 +107,12 @@ a {
 .list-block-open .list-item-text {
 	color: inherit;
 	background: none;
+}
+
+.list-extra {
+	margin-top: 10px;
+	padding: 6px 8px 6px 0;
+	line-height: 1.6;
 }
 
 /* ITEMS END */
