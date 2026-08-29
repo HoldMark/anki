@@ -101,7 +101,10 @@ a {
 .word-info-block span {
 	margin-right: 10px;
 	padding: 5px;
-	background: rgb(204, 204, 204, .5)
+}
+
+.word-info-block a {
+	color: #00529B;
 }
 
 .word-info-block span:empty {
@@ -117,6 +120,10 @@ a {
 
 .trans-hint-span {
     cursor: pointer;
+    background: rgb(204, 204, 204, .5);
+    padding: 5px;
+    font-size: 24px;
+    color: #000;
 }
 
 .trans-hint-span:not(.trans-revealed) {
@@ -252,7 +259,7 @@ a {
 	color: #00529B;
 }
 
-.word-span, .trans-span {
+.word-span {
 	color: #00529B;
 	font-size: 30px;
 }
