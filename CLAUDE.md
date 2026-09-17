@@ -35,6 +35,7 @@ Persistence: SQLite via a hand-rolled table layer in `src/db/`. Config via env v
 - `lexicon-scraper/` — BeautifulSoup scraper for Cambridge Dictionary, used to populate card content.
 - `cards_view/` — Jinja-style card templates for English and Georgian decks.
 - `sandbox/` — throwaway scripts, not part of any addon.
+- `anki-program/` — upstream Anki desktop app source (plain clone of the [ankitects/anki](https://github.com/ankitects/anki) repo), gitignored, not a submodule.
 
 ## Working with cards_view
 

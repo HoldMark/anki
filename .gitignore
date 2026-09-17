@@ -394,4 +394,7 @@ cards_view/preview/images/
 /media_to_text/
 /puzzle_english/
 
+# Upstream Anki program source (plain clone, not tracked/submodule)
+/anki-program/
+
 ### Own Exceptions ###
