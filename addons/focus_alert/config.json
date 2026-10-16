@@ -1,0 +1,11 @@
+{
+    "enabled": true,
+    "only_in_review": false,
+    "volume": 1.0,
+    "cooldown_seconds": 2,
+    "repeat_interval_seconds": 30,
+    "repeat_count": 2,
+    "idle_enabled": true,
+    "idle_interval_seconds": 30,
+    "idle_count": 3
+}

@@ -1,0 +1,9 @@
+- `enabled` — turn the alert on/off.
+- `only_in_review` — beep only when Anki loses focus during a review session.
+- `volume` — playback volume, 0.0–1.0.
+- `cooldown_seconds` — minimum pause between two alerts.
+- `repeat_interval_seconds` — pause between repeat alerts while Anki stays unfocused.
+- `repeat_count` — number of repeat alerts after the first one (0 = no repeats).
+- `idle_enabled` — alert when a review card stays unanswered.
+- `idle_interval_seconds` — pause before each "no answer" alert (counted from the card/answer being shown).
+- `idle_count` — number of "no answer" alerts per card (0 = off).
