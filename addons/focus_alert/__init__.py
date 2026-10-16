@@ -17,6 +17,7 @@ SOUND_PATH = os.path.join(os.path.dirname(__file__), "notification.mp3")
 
 _player = None  # QMediaPlayer, created lazily
 _audio_output = None  # QAudioOutput, must stay referenced while playing
+_afplay = None  # running afplay process on macOS
 _last_played = 0.0  # monotonic time of the last alert
 _repeats_left = 0  # repeat alerts remaining for the current absence
 _repeat_timer = QTimer()
@@ -48,13 +49,20 @@ def _init_player() -> bool:
 
 
 def _play_sound(volume: float):
-    # Plays the alert via QtMultimedia, falls back to afplay on macOS
-    if _init_player():
+    # afplay on macOS (always uses the current output device), QtMultimedia elsewhere
+    global _afplay
+    if sys.platform == "darwin":
+        if _afplay is not None and _afplay.poll() is None:
+            _afplay.terminate()
+        _afplay = subprocess.Popen(["afplay", "-v", str(volume), SOUND_PATH])
+    elif _init_player():
+        from PyQt6.QtMultimedia import QMediaDevices
+
+        # QAudioOutput sticks to the device it was created with
+        _audio_output.setDevice(QMediaDevices.defaultAudioOutput())
         _audio_output.setVolume(volume)
         _player.stop()
         _player.play()
-    elif sys.platform == "darwin":
-        subprocess.Popen(["afplay", "-v", str(volume), SOUND_PATH])
 
 
 def _on_repeat_timeout():
@@ -74,7 +82,7 @@ def _on_app_state_changed(state):
     if state == Qt.ApplicationState.ApplicationActive:
         _repeat_timer.stop()
         # Back in Anki: idle countdown starts over
-        if mw.state == "review":
+        if _is_question_shown():
             _start_idle_timer()
         return
 
@@ -105,6 +113,10 @@ def _on_app_state_changed(state):
         _repeat_timer.start(int(config.get("repeat_interval_seconds", 30) * 1000))
 
 
+def _is_question_shown() -> bool:
+    return mw.state == "review" and mw.reviewer.state == "question"
+
+
 def _start_idle_timer():
     # (Re)starts the "no answer yet" countdown for the current review card
     global _idle_alerts_left
@@ -122,7 +134,7 @@ def _start_idle_timer():
 def _on_idle_timeout():
     # Alerts while the card stays unanswered, up to idle_count times
     global _idle_alerts_left
-    if mw.state != "review":
+    if not _is_question_shown():
         _idle_timer.stop()
         return
     _play_sound(float(_get_config().get("volume", 1.0)))
@@ -131,8 +143,12 @@ def _on_idle_timeout():
         _idle_timer.stop()
 
 
-def _on_show_card(card):
+def _on_show_question(card):
     _start_idle_timer()
+
+
+def _on_show_answer(card):
+    _idle_timer.stop()
 
 
 def _on_state_change(new_state, old_state):
@@ -145,6 +161,6 @@ def _on_main_window_init():
 
 
 gui_hooks.main_window_did_init.append(_on_main_window_init)
-gui_hooks.reviewer_did_show_question.append(_on_show_card)
-gui_hooks.reviewer_did_show_answer.append(_on_show_card)
+gui_hooks.reviewer_did_show_question.append(_on_show_question)
+gui_hooks.reviewer_did_show_answer.append(_on_show_answer)
 gui_hooks.state_did_change.append(_on_state_change)
