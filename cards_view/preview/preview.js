@@ -231,6 +231,7 @@ const CARD_TYPES = [
 const state = {
 	cardType: CARD_TYPES[0],
 	side: "front",
+	isNew: false,
 	values: { ...CARD_TYPES[0].fields },
 };
 
@@ -412,6 +413,8 @@ async function render() {
 	}
 
 	const processedBody = substituteFields(bodyHtml, state.values, entry.rawFields ?? []);
+	// Same marker the new_card_marker addon injects in the reviewer
+	const stateMarker = state.isNew ? '<div class="card-state card-state-new" data-card-state="new" hidden></div>\n' : "";
 
 	const doc = `<!doctype html>
 <html>
@@ -420,7 +423,7 @@ async function render() {
 <style>${css}</style>
 </head>
 <body class="card">
-${processedBody}
+${stateMarker}${processedBody}
 <script>
 ${scripts.join("\n")}
 </script>
@@ -455,6 +458,10 @@ function selectSide(side) {
 $("cardType").addEventListener("change", (e) => selectCardType(e.target.value));
 $("sideFront").addEventListener("click", () => selectSide("front"));
 $("sideBack").addEventListener("click", () => selectSide("back"));
+$("newCard").addEventListener("change", (e) => {
+	state.isNew = e.target.checked;
+	render();
+});
 $("pictureDropdownBtn").addEventListener("click", (e) => {
 	e.stopPropagation();
 	togglePictureDropdown();

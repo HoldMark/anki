@@ -11,6 +11,7 @@ TABLE OF CONTENTS:
 - WORD TREE BLOCK
 - SENTENCE TYPING CARD
 - TYPING CARD
+- NEW CARD MARKER
 - OTHER
 
 */
@@ -424,6 +425,27 @@ a {
 }
 
 /*---- TYPING CARD END ----*/
+
+/*---- NEW CARD MARKER START ----*/
+
+/* .card-state-* is injected by the new_card_marker addon; learn = not graduated yet */
+
+.new-card-label {
+	display: none;
+	position: absolute;
+	right: 10px;
+	bottom: 6px;
+	font-size: 12px;
+	color: #5fae84;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.card:has(.card-state-new, .card-state-learn) .new-card-label {
+	display: inline;
+}
+
+/*---- NEW CARD MARKER END ----*/
 
 /*OTHER START*/
 
