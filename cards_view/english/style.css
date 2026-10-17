@@ -445,6 +445,10 @@ a {
 	display: inline;
 }
 
+.card:has(.card-state-new, .card-state-learn) .basic-block {
+    border-color: #5fae84;
+}
+
 /*---- NEW CARD MARKER END ----*/
 
 /*OTHER START*/
