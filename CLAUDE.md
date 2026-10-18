@@ -17,9 +17,9 @@ Linter config: `pyproject.toml` — line length 120, Python 3.13, ruff rules E/W
 
 The project is a collection of **Anki addons** (plugins for the Anki spaced-repetition app, v25.9.2). Addons are loaded by Anki at startup from the `addons21/` folder in the user's Anki profile — each addon is a Python package with `__init__.py` as entry point.
 
-### Addon: `error_freeze`
+### Addon: Error Cooldown (`addons/error_cooldown`)
 
-Hooks into `reviewer_will_answer_card` to freeze the rating buttons for a configurable duration when the user types a wrong answer on a `{{type:FieldName}}` card. After the freeze the user picks the rating themselves. Configurable per-deck via Anki's addon config system (`config.json` → `"decks": [...]`; empty list = all decks). Also hooks `reviewer_did_show_question` to reset state between cards.
+Hooks into `reviewer_will_answer_card` to ignore rating clicks for `freeze_ms` after the answer is shown (timed from `reviewer_did_show_answer`) when the typed answer on a `{{type:FieldName}}` card is wrong; after that the user picks the rating themselves. The answer is checked with `mw.col.compare_answer`, like Anki itself, with optional `ignore_case` / `ignore_accents`. Configurable via Anki's addon config (`decks`, `include_subdecks`, `include_filtered_decks`, `freeze_ms`, `ignore_case`, `ignore_accents`). `reviewer_did_show_question` resets state between cards. Supports Anki 24.11+ (Python 3.9).
 
 ### Addon: `review_grammar`
 
