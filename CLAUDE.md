@@ -45,7 +45,7 @@ Keep code comments in `cards_view/` short (what, not why/history). Put longer ra
 
 ## Commits across submodules
 
-This repo's `addons/*`, `pdf2text/`, `lexicon-scraper/`, and `sync/` are git submodules,
+This repo's `addons/*`, `lexicon-scraper/`, and `sync/` are git submodules,
 each with their own history. When a requested commit touches files inside one or more of these
 submodules: commit inside each affected submodule first, then commit the resulting submodule
 pointer bump(s) in this parent repo — all as part of the same request, without stopping to ask
