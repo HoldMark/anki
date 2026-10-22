@@ -13,6 +13,7 @@ TABLE OF CONTENTS:
 - TYPING CARD
 - NEW CARD MARKER
 - OTHER
+- MOBILE
 
 */
 
@@ -68,11 +69,14 @@ a {
 	font-size: 15px;
 }
 
+/* in the flow so long hints wrap and push the body down instead of overlapping it */
 .sense-block {
-	position: absolute;
-	left: 20px;
-	top: 10px;
+	margin-bottom: 10px;
 	font-size: 14px;
+}
+
+.basic-block-inner-wrapper:has(.sense-block) {
+	padding-top: 10px;
 }
 
 .sense-span {
@@ -121,13 +125,20 @@ a {
 
 /* MORE INFO START */
 
+/* flex so wrapped chips don't overlap each other's background */
 .word-info-block {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 10px;
 	margin: 20px 0px;
 	font-size: 17px
 }
 
+.word-info-block a {
+	display: flex;
+}
+
 .word-info-block span {
-	margin-right: 10px;
 	padding: 5px;
 	background: rgb(204, 204, 204, .5)
 }
@@ -183,6 +194,17 @@ a {
 .audio-span {
 	display: block;
 	min-height: 45px;
+}
+
+/* AnkiWeb renders {{audio}} as a native <audio> player */
+.button-audio-block:has(audio) {
+	border: none;
+}
+
+.audio-span audio {
+	display: block;
+	width: 100%;
+	height: 45px;
 }
 
 /* BUTTONS END */
@@ -480,3 +502,74 @@ a {
 }
 
 /*---- OTHER END ----*/
+
+/*---- MOBILE START ----*/
+
+@media (max-width: 600px) {
+
+	.card {
+		font-size: 18px;
+		margin: 15px auto;
+		width: auto;
+		padding: 0 8px;
+	}
+
+	.basic-block-inner-wrapper {
+		padding: 15px 12px 25px;
+	}
+
+	.word-span {
+		font-size: 26px;
+	}
+
+	.word-info-block {
+		font-size: 16px;
+	}
+
+	.button-block {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.button-audio-block {
+		margin-right: 0;
+	}
+	.button-video-block {
+		margin-left: 0;
+	}
+
+	.button-video-block a {
+		justify-content: center;
+		padding: 0 10px;
+	}
+
+	.img-block {
+		row-gap: 15px;
+	}
+	.img-block img {
+		width: 46%;
+	}
+
+	.word-tree-sense-block {
+		margin-left: 5px;
+	}
+
+	.condition-block .condition, .condition-block .condition-name, .review {
+		font-size: 16px;
+	}
+
+	.typing-answer-input {
+		font-size: 18px;
+	}
+
+	.typing-diff-line {
+		font-size: 20px;
+		overflow-wrap: anywhere;
+	}
+
+	.typing-diff-arrow {
+		font-size: 16px;
+	}
+}
+
+/*---- MOBILE END ----*/
