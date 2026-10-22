@@ -3,6 +3,7 @@
 TABLE OF CONTENTS:
 
 - COMMON
+- NEW CARD MARKER
 - OTHER
 
 */
@@ -41,6 +42,31 @@ a {
 }
 
 /* COMMON END */
+
+/* NEW CARD MARKER START */
+
+/* .card-state-* is injected by the new_card_marker addon; learn = not graduated yet */
+
+.new-card-label {
+	display: none;
+	position: absolute;
+	right: 10px;
+	bottom: 6px;
+	font-size: 12px;
+	color: #5fae84;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.card:has(.card-state-new, .card-state-learn) .new-card-label {
+	display: inline;
+}
+
+.card:has(.card-state-new, .card-state-learn) .basic-block {
+	border-color: #5fae84;
+}
+
+/* NEW CARD MARKER END */
 
 /* OTHER START */
 
