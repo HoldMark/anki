@@ -37,13 +37,15 @@ Persistence: SQLite via a hand-rolled table layer in `src/db/`. Config via env v
 - `sandbox/` — throwaway scripts, not part of any addon.
 - `anki-program/` — upstream Anki desktop app source (plain clone of the [ankitects/anki](https://github.com/ankitects/anki) repo), gitignored, not a submodule.
 
+The Anki MCP server (`anki-mcp`) lives outside this repo, in `/Users/markprodius/projects/mcp`.
+
 ## Working with cards_view
 
 Keep code comments in `cards_view/` short (what, not why/history). Put longer rationale, gotchas, and other useful background in `cards_view/docs/notes.md` (gitignored, local-only) instead.
 
 ## Commits across submodules
 
-This repo's `addons/*`, `pdf2text/`, `lexicon-scraper/`, `mcp/`, and `sync/` are git submodules,
+This repo's `addons/*`, `pdf2text/`, `lexicon-scraper/`, and `sync/` are git submodules,
 each with their own history. When a requested commit touches files inside one or more of these
 submodules: commit inside each affected submodule first, then commit the resulting submodule
 pointer bump(s) in this parent repo — all as part of the same request, without stopping to ask
