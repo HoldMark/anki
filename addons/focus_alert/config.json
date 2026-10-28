@@ -7,5 +7,7 @@
     "repeat_count": 2,
     "idle_enabled": true,
     "idle_interval_seconds": 30,
-    "idle_count": 3
+    "idle_count": 3,
+    "idle_decks": [],
+    "idle_excluded_decks": []
 }

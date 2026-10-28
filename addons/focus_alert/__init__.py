@@ -117,12 +117,32 @@ def _is_question_shown() -> bool:
     return mw.state == "review" and mw.reviewer.state == "question"
 
 
+def _matches_deck(name: str, decks) -> bool:
+    # Deck itself or any of its subdecks
+    return any(name == d or name.startswith(d + "::") for d in decks)
+
+
+def _idle_allowed_for_card(config) -> bool:
+    # Checks idle_decks / idle_excluded_decks against the card's deck (and home deck for filtered ones)
+    card = mw.reviewer.card
+    if card is None:
+        return False
+    names = [mw.col.decks.name(did) for did in (card.did, card.odid) if did]
+    include = config.get("idle_decks") or []
+    exclude = config.get("idle_excluded_decks") or []
+    if any(_matches_deck(n, exclude) for n in names):
+        return False
+    return not include or any(_matches_deck(n, include) for n in names)
+
+
 def _start_idle_timer():
     # (Re)starts the "no answer yet" countdown for the current review card
     global _idle_alerts_left
     _idle_timer.stop()
     config = _get_config()
     if not config.get("idle_enabled", True):
+        return
+    if not _idle_allowed_for_card(config):
         return
     if QApplication.applicationState() != Qt.ApplicationState.ApplicationActive:
         return
@@ -143,15 +163,15 @@ def _on_idle_timeout():
         _idle_timer.stop()
 
 
-def _on_show_question(card):
+def _on_show_question(card):  # noqa
     _start_idle_timer()
 
 
-def _on_show_answer(card):
+def _on_show_answer(card):  # noqa
     _idle_timer.stop()
 
 
-def _on_state_change(new_state, old_state):
+def _on_state_change(new_state, old_state):  # noqa
     if new_state != "review":
         _idle_timer.stop()
 

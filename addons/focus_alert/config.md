@@ -7,3 +7,5 @@
 - `idle_enabled` — alert when a review card stays unanswered.
 - `idle_interval_seconds` — pause before each "no answer" alert (counted from the question being shown; never fires on the answer side).
 - `idle_count` — number of "no answer" alerts per card (0 = off).
+- `idle_decks` — deck names where "no answer" alerts work (subdecks included); empty = all decks.
+- `idle_excluded_decks` — deck names where "no answer" alerts never work (subdecks included); wins over `idle_decks`.
