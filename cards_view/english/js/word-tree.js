@@ -38,18 +38,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 return total + (pos.senses || []).reduce((s, sense) => s + (sense.definitions || []).length, 0);
             }, 0);
 
-            // Strips HTML and collapses whitespace, so text read off data-*
-            // attributes (which can carry tags Anki's editor added) lines up with
-            // the plain-text word_tree JSON when compared below.
+            // Strips HTML and collapses whitespace, so field HTML (which can carry
+            // tags Anki's editor added) lines up with the plain-text word_tree JSON
+            // when compared below.
             function normalizeFieldText(str) {
                 const scratch = document.createElement("div");
                 scratch.innerHTML = str || "";
                 return (scratch.textContent || "").replace(/\s+/g, " ").trim();
             }
 
-            const currentPos = normalizeFieldText(blockNode.dataset.pos);
-            const currentSense = normalizeFieldText(blockNode.dataset.sense);
-            const currentDefinition = normalizeFieldText(blockNode.dataset.definition);
+            // Card's own fields, from hidden spans (not data-* attributes: a raw " in a field breaks them).
+            function currentField(name) {
+                const node = blockNode.querySelector(`.word-tree-current[data-field="${name}"]`);
+                return normalizeFieldText(node ? node.innerHTML : "");
+            }
+
+            const currentPos = currentField("pos");
+            const currentSense = currentField("sense");
+            const currentDefinition = currentField("definition");
 
             // Drop the card's own definition, then any sense/pos left empty by that.
             partsOfSpeech = partsOfSpeech
@@ -84,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log("word-tree: no other meanings, removed block");
             } else {
                 // Only shown per part-of-speech when it differs from the card's own.
-                const mainTrans = normalizeFieldText(blockNode.dataset.trans);
+                const mainTrans = currentField("trans");
 
                 partsOfSpeech.forEach(pos => {
                     const posBlock = document.createElement("div");

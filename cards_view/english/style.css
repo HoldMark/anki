@@ -350,7 +350,8 @@ a {
     padding-left: 20px;
 }
 
-.word-tree-data {
+.word-tree-data,
+.word-tree-current {
     display: none;
 }
 
