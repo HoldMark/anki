@@ -21,12 +21,12 @@ The project is a collection of **Anki addons** (plugins for the Anki spaced-repe
 
 Hooks into `reviewer_will_answer_card` to ignore rating clicks for `freeze_ms` after the answer is shown (timed from `reviewer_did_show_answer`) when the typed answer on a `{{type:FieldName}}` card is wrong; after that the user picks the rating themselves. The answer is checked with `mw.col.compare_answer`, like Anki itself, with optional `ignore_case` / `ignore_accents`. Configurable via Anki's addon config (`decks`, `include_subdecks`, `include_filtered_decks`, `freeze_ms`, `ignore_case`, `ignore_accents`). `reviewer_did_show_question` resets state between cards. Supports Anki 24.11+ (Python 3.9).
 
-### Addon: `review_grammar`
+### Addon: Grammar Drill (`addons/grammar_drill`)
 
 AI-powered grammar task system. Two flows communicated over the Anki webview JS bridge (`webview_did_receive_js_message`):
 
 1. **`task_for_card_with_eng_word`** — `create_task.py` generates a grammar task (tense, sentence type, pronouns) using a daily seed for deterministic-per-word randomness. Returns a task with an Obsidian link.
-2. **`check grammar and other`** — `review_task.py` submits the user's sentence to the **Google Gemini API** (`src/llm/gemini.py`) and returns structured feedback (correctness, errors, suggestions).
+2. **`check grammar and other`** — `review_task.py` submits the user's sentence to the **DeepSeek API** (`src/llm/deepseek.py`) and returns structured feedback (correctness, errors, suggestions).
 
 Persistence: SQLite via a hand-rolled table layer in `src/db/`. Config via env vars loaded by `src/config/`.
 
